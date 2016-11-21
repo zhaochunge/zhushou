@@ -309,7 +309,7 @@
 					0440D6191DDE8803006242E2 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7384QXCWNP;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					0440D6321DDE8804006242E2 = {
 						CreatedOnToolsVersion = 8.0;
@@ -540,8 +540,10 @@
 				);
 				INFOPLIST_FILE = HealthAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.d.HealthAssistant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhezhewl.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e186d2b3-27be-495a-84ff-d209fa3f7599";
+				PROVISIONING_PROFILE_SPECIFIER = azzwlceshi;
 			};
 			name = Debug;
 		};
@@ -556,8 +558,10 @@
 				);
 				INFOPLIST_FILE = HealthAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.d.HealthAssistant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhezhewl.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e186d2b3-27be-495a-84ff-d209fa3f7599";
+				PROVISIONING_PROFILE_SPECIFIER = azzwlceshi;
 			};
 			name = Release;
 		};

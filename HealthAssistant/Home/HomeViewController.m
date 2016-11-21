@@ -18,6 +18,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 49)];
+    headLabel.text = @"主页";
+    headLabel.textAlignment = YES;
+    headLabel.textColor = [UIColor whiteColor];
+    headLabel.backgroundColor = [UIColor colorWithRed:0/255.0 green:106/255.0 blue:29/255.0 alpha:1];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
