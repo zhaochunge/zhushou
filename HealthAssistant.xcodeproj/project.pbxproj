@@ -542,8 +542,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhezhewl.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				PROVISIONING_PROFILE = "e186d2b3-27be-495a-84ff-d209fa3f7599";
 				PROVISIONING_PROFILE_SPECIFIER = azzwlceshi;
+=======
+				PROVISIONING_PROFILE = "c7e59886-2317-4fc1-958b-d0a6d9184993";
+				PROVISIONING_PROFILE_SPECIFIER = zhezhewangluo;
+>>>>>>> 4531292141e82178e650131083fa92e788865d87
 			};
 			name = Debug;
 		};
@@ -560,8 +565,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhezhewl.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				PROVISIONING_PROFILE = "e186d2b3-27be-495a-84ff-d209fa3f7599";
 				PROVISIONING_PROFILE_SPECIFIER = azzwlceshi;
+=======
+				PROVISIONING_PROFILE = "c7e59886-2317-4fc1-958b-d0a6d9184993";
+				PROVISIONING_PROFILE_SPECIFIER = zhezhewangluo;
+>>>>>>> 4531292141e82178e650131083fa92e788865d87
 			};
 			name = Release;
 		};
