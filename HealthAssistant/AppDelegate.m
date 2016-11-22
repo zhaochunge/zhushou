@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoadViewController.h"
 #import <SMS_SDK/SMSSDK.h>
+#import "HomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,8 +26,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    LoadViewController *load = [LoadViewController new];
-    self.window.rootViewController = load;
+//    LoadViewController *load = [LoadViewController new];
+//    
+//    self.window.rootViewController = load;
+    
+    HomeViewController *home = [HomeViewController new];
+    self.window.rootViewController = home;
     
     
     
