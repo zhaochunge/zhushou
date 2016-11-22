@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "WLCircleProgressView.h"
+#import "MDPieView.h"
 
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
@@ -17,6 +18,10 @@
 
 @property(nonatomic,strong)UILabel *healthLabel;
 @property(nonatomic,assign)int i;
+
+@property (nonatomic,assign) float percent;
+@property (nonatomic,strong) MDPieView *pieView;
+
 
 @end
 
@@ -58,13 +63,9 @@
     [ground addSubview:measureBtn];
     
     //圆形加载条
-    WLCircleProgressView *circleProgress = [WLCircleProgressView viewWithFrame:CGRectMake(WIDTH/2-100, HEIGHT/5, 200, 200)
-                                                                    circlesSize:CGRectMake(100, 10, 100, 10)];
-    circleProgress.layer.cornerRadius = 10;
-    circleProgress.progressValue = 0.2;
-    [self.view addSubview:circleProgress];
-    self.progressView = circleProgress;
-    self.progressView.progressValue = 0.01;
+    self.percent = 0;
+    self.pieView = [[MDPieView alloc]initWithFrame:CGRectMake(WIDTH/2-100, HEIGHT/5, 200, 200) andPercent:self.percent andColor:[UIColor whiteColor]];
+    [self.view addSubview:_pieView];
     
     //健康指数
     self.healthLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 85, 140, 30)];
@@ -72,44 +73,18 @@
     _healthLabel.font = [UIFont systemFontOfSize:19];
     _healthLabel.textColor = [UIColor whiteColor];
     _healthLabel.textAlignment = YES;
-    [circleProgress addSubview:_healthLabel];
-//    [self createData];
+    [_pieView addSubview:_healthLabel];
+    [self createData];
     
 
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    _healthLabel.text = @"98%";
-    NSTimer *timer = [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        
-        if (_i<100) {
-            _i++;
-            self.progressView.progressValue = _i*0.01;
-        }
-        
-    }];
-//    for (int i=0; i<98; i++) {
-////        [UIView animateWithDuration:100 delay:5 options:1 animations:^{
-//            self.progressView.progressValue = i*0.01;
-////        } completion:^(BOOL finished) {
-//        
-////        }];
-//        //        self.progressView.progressValue = i*0.01;
-//        
-//    }
 
-}
 #pragma mark 数据解析
 -(void)createData{
-    _healthLabel.text = @"98%";
-    for (int i=0; i<98; i++) {
-        [UIView animateWithDuration:3 delay:1 options:1 animations:^{
-            self.progressView.progressValue = i*0.01;
-        } completion:^(BOOL finished) {
-            
-        }];
-//        self.progressView.progressValue = i*0.01;
-        
-    }
+    _healthLabel.text = @"80%";
+    self.percent = 0.8;
+    [self.pieView reloadViewWithPercent:self.percent];
+
    
 }
 #pragma mark 底部button
