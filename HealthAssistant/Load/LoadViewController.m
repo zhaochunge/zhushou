@@ -10,6 +10,7 @@
 #import "RegisterViewController.h"
 #import "HomeViewController.h"
 #import "InputViewController.h"
+#import "HomeViewController1.h"
 
 @interface LoadViewController ()<UITextFieldDelegate>
 - (IBAction)resignBtn:(id)sender;
