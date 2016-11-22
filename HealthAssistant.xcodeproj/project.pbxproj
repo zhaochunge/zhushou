@@ -276,13 +276,10 @@
 		0440D61C1DDE8803006242E2 /* HealthAssistant */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				C08ED3561DE2EB5900BDC7D3 /* thirdparty */,
 				C00685181DE2C12300E29535 /* Tools */,
-=======
 				0439A4131DE2E52300D05E53 /* Tool */,
 				0439A3EC1DE2CE5600D05E53 /* threePart */,
->>>>>>> 7ab8b4d94ad98c8de8e791c783d5563d0f9061db
 				042F21AE1DDFD579003ADF50 /* SMS_SDK */,
 				0440D6711DDED941006242E2 /* Load */,
 				0440D6701DDED933006242E2 /* Home */,
@@ -339,15 +336,12 @@
 			children = (
 				0440D6811DDED960006242E2 /* HomeViewController.h */,
 				0440D6821DDED960006242E2 /* HomeViewController.m */,
-<<<<<<< HEAD
 				C032B9BE1DE2C7AF000FB3C3 /* InputViewController.h */,
 				C0E61F8F1DE3C64A0096ED0C /* InputViewController.m */,
 				C032B9C01DE2C7AF000FB3C3 /* InputViewController.xib */,
-=======
 				0439A3E71DE2C2EE00D05E53 /* HomeViewController1.h */,
 				0439A3E81DE2C2EE00D05E53 /* HomeViewController1.m */,
 				0439A3E91DE2C2EE00D05E53 /* HomeViewController1.xib */,
->>>>>>> 7ab8b4d94ad98c8de8e791c783d5563d0f9061db
 			);
 			path = Home;
 			sourceTree = "<group>";
