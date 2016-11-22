@@ -44,6 +44,7 @@
 		0440D67F1DDED941006242E2 /* SetPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440D6791DDED941006242E2 /* SetPassWordViewController.m */; };
 		0440D6801DDED941006242E2 /* SetPassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440D67A1DDED941006242E2 /* SetPassWordViewController.xib */; };
 		0440D6831DDED960006242E2 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440D6821DDED960006242E2 /* HomeViewController.m */; };
+		044991D81DE3C9EA006719B2 /* MDPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044991D71DE3C9EA006719B2 /* MDPieView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,8 @@
 		0440D67A1DDED941006242E2 /* SetPassWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetPassWordViewController.xib; sourceTree = "<group>"; };
 		0440D6811DDED960006242E2 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0440D6821DDED960006242E2 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		044991D61DE3C9EA006719B2 /* MDPieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDPieView.h; sourceTree = "<group>"; };
+		044991D71DE3C9EA006719B2 /* MDPieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDPieView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +234,8 @@
 		0439A4131DE2E52300D05E53 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				044991D61DE3C9EA006719B2 /* MDPieView.h */,
+				044991D71DE3C9EA006719B2 /* MDPieView.m */,
 				0439A4141DE2E52300D05E53 /* WLCircleProgressView.h */,
 				0439A4151DE2E52300D05E53 /* WLCircleProgressView.m */,
 			);
@@ -496,6 +501,7 @@
 				0440D6831DDED960006242E2 /* HomeViewController.m in Sources */,
 				0439A40B1DE2CE5600D05E53 /* MASConstraintMaker.m in Sources */,
 				0439A4121DE2CE5600D05E53 /* ViewController+MASAdditions.m in Sources */,
+				044991D81DE3C9EA006719B2 /* MDPieView.m in Sources */,
 				0439A40E1DE2CE5600D05E53 /* MASViewConstraint.m in Sources */,
 				0440D67D1DDED941006242E2 /* RegisterViewController.m in Sources */,
 				0439A40D1DE2CE5600D05E53 /* MASViewAttribute.m in Sources */,
