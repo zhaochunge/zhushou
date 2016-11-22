@@ -9,6 +9,7 @@
 #import "LoadViewController.h"
 #import "RegisterViewController.h"
 #import "HomeViewController.h"
+#import "InputViewController.h"
 #import "HomeViewController1.h"
 
 @interface LoadViewController ()<UITextFieldDelegate>
@@ -29,9 +30,9 @@
     _loadName.delegate = self;
     _passWord.delegate = self;
     
-    UIImageView *userimage=[[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 25, 25)];
+    UIImageView *userimage=[UIImageView new];
     userimage.image = [UIImage imageNamed:@"用户"];
-    _loadName.leftView=userimage;
+    _loadName.leftView = userimage;
     _loadName.leftViewMode = UITextFieldViewModeAlways;
     
     UIImageView *passWordimage=[[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 25, 25)];
@@ -73,6 +74,7 @@
     
     if (_loadName.text.length>0 && _passWord.text.length>0) {
         HomeViewController *home = [HomeViewController new];
+//        InputViewController *home = [InputViewController new];
         [self presentViewController:home animated:YES completion:^{
             
         }];
