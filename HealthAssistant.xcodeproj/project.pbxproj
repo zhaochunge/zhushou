@@ -30,6 +30,11 @@
 		0440D67F1DDED941006242E2 /* SetPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440D6791DDED941006242E2 /* SetPassWordViewController.m */; };
 		0440D6801DDED941006242E2 /* SetPassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440D67A1DDED941006242E2 /* SetPassWordViewController.xib */; };
 		0440D6831DDED960006242E2 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440D6821DDED960006242E2 /* HomeViewController.m */; };
+		C006851B1DE2C1CD00E29535 /* UrlString.m in Sources */ = {isa = PBXBuildFile; fileRef = C006851A1DE2C1CD00E29535 /* UrlString.m */; };
+		C032B9C21DE2C7AF000FB3C3 /* InputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C032B9C01DE2C7AF000FB3C3 /* InputViewController.xib */; };
+		C08ED35C1DE2EB7700BDC7D3 /* TXHRrettyRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = C08ED3591DE2EB7700BDC7D3 /* TXHRrettyRuler.m */; };
+		C08ED35D1DE2EB7700BDC7D3 /* TXHRulerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C08ED35B1DE2EB7700BDC7D3 /* TXHRulerScrollView.m */; };
+		C0E61F901DE3C64A0096ED0C /* InputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E61F8F1DE3C64A0096ED0C /* InputViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +90,16 @@
 		0440D67A1DDED941006242E2 /* SetPassWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetPassWordViewController.xib; sourceTree = "<group>"; };
 		0440D6811DDED960006242E2 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0440D6821DDED960006242E2 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		C00685191DE2C1CD00E29535 /* UrlString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlString.h; sourceTree = "<group>"; };
+		C006851A1DE2C1CD00E29535 /* UrlString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlString.m; sourceTree = "<group>"; };
+		C032B9BE1DE2C7AF000FB3C3 /* InputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewController.h; sourceTree = "<group>"; };
+		C032B9C01DE2C7AF000FB3C3 /* InputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputViewController.xib; sourceTree = "<group>"; };
+		C08ED3551DE2CF0E00BDC7D3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C08ED3581DE2EB7700BDC7D3 /* TXHRrettyRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHRrettyRuler.h; sourceTree = "<group>"; };
+		C08ED3591DE2EB7700BDC7D3 /* TXHRrettyRuler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHRrettyRuler.m; sourceTree = "<group>"; };
+		C08ED35A1DE2EB7700BDC7D3 /* TXHRulerScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHRulerScrollView.h; sourceTree = "<group>"; };
+		C08ED35B1DE2EB7700BDC7D3 /* TXHRulerScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHRulerScrollView.m; sourceTree = "<group>"; };
+		C0E61F8F1DE3C64A0096ED0C /* InputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +181,8 @@
 		0440D61C1DDE8803006242E2 /* HealthAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				C08ED3561DE2EB5900BDC7D3 /* thirdparty */,
+				C00685181DE2C12300E29535 /* Tools */,
 				042F21AE1DDFD579003ADF50 /* SMS_SDK */,
 				0440D6711DDED941006242E2 /* Load */,
 				0440D6701DDED933006242E2 /* Home */,
@@ -187,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				0440D61E1DDE8803006242E2 /* main.m */,
+				C08ED3551DE2CF0E00BDC7D3 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -221,6 +239,9 @@
 			children = (
 				0440D6811DDED960006242E2 /* HomeViewController.h */,
 				0440D6821DDED960006242E2 /* HomeViewController.m */,
+				C032B9BE1DE2C7AF000FB3C3 /* InputViewController.h */,
+				C0E61F8F1DE3C64A0096ED0C /* InputViewController.m */,
+				C032B9C01DE2C7AF000FB3C3 /* InputViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -239,6 +260,34 @@
 				0440D67A1DDED941006242E2 /* SetPassWordViewController.xib */,
 			);
 			path = Load;
+			sourceTree = "<group>";
+		};
+		C00685181DE2C12300E29535 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C00685191DE2C1CD00E29535 /* UrlString.h */,
+				C006851A1DE2C1CD00E29535 /* UrlString.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		C08ED3561DE2EB5900BDC7D3 /* thirdparty */ = {
+			isa = PBXGroup;
+			children = (
+				C08ED3571DE2EB7700BDC7D3 /* PrettyRulerClass */,
+			);
+			path = thirdparty;
+			sourceTree = "<group>";
+		};
+		C08ED3571DE2EB7700BDC7D3 /* PrettyRulerClass */ = {
+			isa = PBXGroup;
+			children = (
+				C08ED3581DE2EB7700BDC7D3 /* TXHRrettyRuler.h */,
+				C08ED3591DE2EB7700BDC7D3 /* TXHRrettyRuler.m */,
+				C08ED35A1DE2EB7700BDC7D3 /* TXHRulerScrollView.h */,
+				C08ED35B1DE2EB7700BDC7D3 /* TXHRulerScrollView.m */,
+			);
+			path = PrettyRulerClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,7 +352,7 @@
 		0440D6121DDE8803006242E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = zcg;
 				TargetAttributes = {
 					0440D6191DDE8803006242E2 = {
@@ -351,6 +400,7 @@
 				0440D62D1DDE8803006242E2 /* LaunchScreen.storyboard in Resources */,
 				0440D62A1DDE8803006242E2 /* Assets.xcassets in Resources */,
 				0440D6801DDED941006242E2 /* SetPassWordViewController.xib in Resources */,
+				C032B9C21DE2C7AF000FB3C3 /* InputViewController.xib in Resources */,
 				0440D6281DDE8803006242E2 /* Main.storyboard in Resources */,
 				0440D67C1DDED941006242E2 /* LoadViewController.xib in Resources */,
 				0440D67E1DDED941006242E2 /* RegisterViewController.xib in Resources */,
@@ -378,10 +428,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C08ED35D1DE2EB7700BDC7D3 /* TXHRulerScrollView.m in Sources */,
+				C006851B1DE2C1CD00E29535 /* UrlString.m in Sources */,
 				0440D6251DDE8803006242E2 /* ViewController.m in Sources */,
 				0440D6221DDE8803006242E2 /* AppDelegate.m in Sources */,
 				0440D67F1DDED941006242E2 /* SetPassWordViewController.m in Sources */,
 				0440D61F1DDE8803006242E2 /* main.m in Sources */,
+				C08ED35C1DE2EB7700BDC7D3 /* TXHRrettyRuler.m in Sources */,
+				C0E61F901DE3C64A0096ED0C /* InputViewController.m in Sources */,
 				0440D67B1DDED941006242E2 /* LoadViewController.m in Sources */,
 				0440D6831DDED960006242E2 /* HomeViewController.m in Sources */,
 				0440D67D1DDED941006242E2 /* RegisterViewController.m in Sources */,
@@ -457,6 +511,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -469,6 +524,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HealthAssistant/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -505,6 +562,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -515,6 +573,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HealthAssistant/PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -542,8 +602,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhezhewl.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e186d2b3-27be-495a-84ff-d209fa3f7599";
-				PROVISIONING_PROFILE_SPECIFIER = azzwlceshi;
 				PROVISIONING_PROFILE = "c7e59886-2317-4fc1-958b-d0a6d9184993";
 				PROVISIONING_PROFILE_SPECIFIER = zhezhewangluo;
 			};
@@ -562,8 +620,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhezhewl.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e186d2b3-27be-495a-84ff-d209fa3f7599";
-				PROVISIONING_PROFILE_SPECIFIER = azzwlceshi;
 				PROVISIONING_PROFILE = "c7e59886-2317-4fc1-958b-d0a6d9184993";
 				PROVISIONING_PROFILE_SPECIFIER = zhezhewangluo;
 			};
