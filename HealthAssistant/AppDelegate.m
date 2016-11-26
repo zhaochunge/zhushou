@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "LoadViewController.h"
-#import <SMS_SDK/SMSSDK.h>
 #import "HomeViewController.h"
 
 @interface AppDelegate ()
@@ -21,23 +20,38 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [SMSSDK registerApp:@"192b12ac007f6" withSecret:@"fa5ad550eb204af65615c077af73903e"];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-//    LoadViewController *load = [LoadViewController new];
-//    
-//    self.window.rootViewController = load;
+    LoadViewController *load = [LoadViewController new];
+//
+    self.window.rootViewController = load;
     
-    HomeViewController *home = [HomeViewController new];
-    self.window.rootViewController = home;
-    
+//    self.window.rootViewController = home;
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:KNOTIFICATION_LOGINCHANGED object:nil];
     
     
     return YES;
+}
+
+
+- (void)loginStateChange:(NSNotification *)notification{
+
+    BOOL loginSuccess = [notification.object boolValue];
+        HomeViewController *home = [HomeViewController new];
+
+
+    
+    if (loginSuccess) {
+            UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:home];
+        self.window.rootViewController = navc;
+    }
+
+
+
 }
 
 

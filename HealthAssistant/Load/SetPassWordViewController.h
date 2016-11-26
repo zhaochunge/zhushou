@@ -6,8 +6,8 @@
 //  Copyright © 2016年 zcg. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface SetPassWordViewController : UIViewController
+//#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+@interface SetPassWordViewController : BaseViewController
 
 @end

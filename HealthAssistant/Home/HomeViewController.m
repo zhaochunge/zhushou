@@ -9,7 +9,11 @@
 #import "HomeViewController.h"
 #import "WLCircleProgressView.h"
 #import "MDPieView.h"
-
+#import "InputViewController.h"
+#import "heartRateViewController.h"
+#import "BloodGlucoseViewController.h"
+#import "BloodPressureViewController.h"
+#import "SettingViewController.h"
 #define WIDTH self.view.frame.size.width
 #define HEIGHT self.view.frame.size.height
 @interface HomeViewController ()
@@ -31,11 +35,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"主页";
     
     _i = 0;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self.navigationController.navigationBar setBarTintColor:RGBA(20, 120, 223, 1)];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"设置" highImage:nil target:self action:@selector(setting)];
+    
     [self createheadView];
     [self bottomBtn];
 
+}
+
+
+- (void)setting{
+
+    SettingViewController *setVC = [SettingViewController new];
+    
+    PUSH_VIEWCONTROLLER(setVC, YES);
 }
 
 -(void)createheadView{
@@ -93,24 +112,43 @@
     pressure.frame = CGRectMake(50, HEIGHT/21*14+10+64, WIDTH/6, WIDTH/6);
     pressure.layer.masksToBounds = YES;
     pressure.layer.cornerRadius = WIDTH/12;
-    pressure.backgroundColor = [UIColor blueColor];
+    pressure.layer.borderWidth = 1;
+    pressure.layer.borderColor = RGBA(40, 192, 198, 1).CGColor;
+//    pressure.backgroundColor = [UIColor blueColor];
+    [pressure setImage:[UIImage imageNamed:@"血压"] forState:UIControlStateNormal];
+    pressure.adjustsImageWhenHighlighted = NO;
     [self.view addSubview:pressure];
-   
+   	[pressure addTarget:self action:@selector(pressureClick) forControlEvents:UIControlEventTouchUpInside];
+    
     UIButton *suger = [UIButton buttonWithType:UIButtonTypeCustom];
     suger.frame = CGRectMake(WIDTH/2-WIDTH/12, HEIGHT/21*14+10+64, WIDTH/6, WIDTH/6);
     suger.layer.masksToBounds = YES;
     suger.layer.cornerRadius = WIDTH/12;
-    [self.view addSubview:suger];
-    suger.backgroundColor = [UIColor blueColor];
+    suger.layer.borderWidth = 1;
+    suger.layer.borderColor = RGBA(40, 192, 198, 1).CGColor;
 
+    
+    [self.view addSubview:suger];
+//    suger.backgroundColor = [UIColor blueColor];
+    [suger setImage:[UIImage imageNamed:@"血糖"] forState:UIControlStateNormal];
+    suger.adjustsImageWhenHighlighted = NO;
+
+    [suger addTarget:self action:@selector(BloodGlucosClick) forControlEvents:UIControlEventTouchUpInside];
+    
     UIButton *rate = [UIButton buttonWithType:UIButtonTypeCustom];
     rate.frame = CGRectMake(WIDTH-50-WIDTH/6, HEIGHT/21*14+10+64, WIDTH/6, WIDTH/6);
     rate.layer.masksToBounds = YES;
     rate.layer.cornerRadius = WIDTH/12;
-    [self.view addSubview:rate];
-    rate.backgroundColor = [UIColor blueColor];
+    rate.layer.borderWidth = 1;
+    rate.layer.borderColor = RGBA(40, 192, 198, 1).CGColor;
 
-    
+    [self.view addSubview:rate];
+//    rate.backgroundColor = [UIColor blueColor];
+    [rate setImage:[UIImage imageNamed:@"心率"] forState:UIControlStateNormal];
+    rate.adjustsImageWhenHighlighted = NO;
+
+
+    [rate addTarget:self action:@selector(heartRateClick) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel *pressureLabel = [UILabel new];
     pressureLabel.frame = CGRectMake(50, HEIGHT/21*14+15+WIDTH/6+64, WIDTH/6, 20);
@@ -150,6 +188,31 @@
     
 }
 
+#pragma mark Action
+
+- (void)pressureClick{
+
+    BloodPressureViewController *vc = [BloodPressureViewController new];
+    
+    PUSH_VIEWCONTROLLER(vc, YES);
+    
+}
+
+
+
+- (void)BloodGlucosClick{
+    
+    BloodGlucoseViewController *vc = [BloodGlucoseViewController new];
+    
+    PUSH_VIEWCONTROLLER(vc, YES);
+
+}
+
+- (void)heartRateClick{
+    heartRateViewController *vc = [heartRateViewController new];
+    
+    PUSH_VIEWCONTROLLER(vc, YES);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

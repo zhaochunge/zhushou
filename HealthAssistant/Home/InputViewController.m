@@ -8,9 +8,12 @@
 
 #import "InputViewController.h"
 #import "TXHRrettyRuler.h"
-
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface InputViewController ()<UITableViewDelegate,UITableViewDataSource,TXHRrettyRulerDelegate>
+
 @property (nonatomic,strong)UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 @property (weak, nonatomic) IBOutlet UIView *backView;
@@ -21,6 +24,12 @@
 @property (nonatomic,strong)TXHRrettyRuler *lowRuler;
 @property (weak, nonatomic) IBOutlet UILabel *highLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lowLabel;
+
+
+
+@property (nonatomic,copy) NSString *highStr;
+@property (nonatomic,copy) NSString *LowStr;
+@property (nonatomic,copy) NSString *DateStr;
 
 @end
 
@@ -33,11 +42,34 @@
     self.highLabel.text = @"100";
     self.lowLabel.text = @"100";
     self.backView.hidden = YES;
-    [self createView];
     
+    self.highStr = @"100";
+    self.LowStr = @"100";
+    self.DateStr = [self getDateHM];
+    
+    
+    
+    [self createView];
     
 }
 
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
+//    self.navigationController.navigationBarHidden = YES;
+    
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+//    self.navigationController.navigationBarHidden = NO;
+
+
+}
 - (void)createView{
 
     self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, 144) style:UITableViewStylePlain];
@@ -52,24 +84,29 @@
     
     
     //创建刻度尺
-    self.highRuler = [[TXHRrettyRuler alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth - 20 * 2, 60)];
     
-    self.highRuler.layer.cornerRadius = 5.f;
-    self.highRuler.layer.borderWidth = 1;
     
-    self.highRuler.rulerDeletate = self;
-    [self.highRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:120.f smallMode:YES];
-    [self.upView addSubview:self.highRuler];
-
     self.lowRuler = [[TXHRrettyRuler alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth - 20 * 2, 60)];
     
     self.lowRuler.layer.cornerRadius = 5.f;
     self.lowRuler.layer.borderWidth = 1;
     
     self.lowRuler.rulerDeletate = self;
-    [self.lowRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:120.f smallMode:YES];
+    
+    [self.lowRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
     [self.downView addSubview:self.lowRuler];
 
+    
+    self.highRuler = [[TXHRrettyRuler alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth - 20 * 2, 60)];
+    
+    self.highRuler.layer.cornerRadius = 5.f;
+    self.highRuler.layer.borderWidth = 1;
+    
+    self.highRuler.rulerDeletate = self;
+    [self.highRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
+    [self.upView addSubview:self.highRuler];
+
+   
 }
 
 #pragma mark tableViewDelegate
@@ -179,24 +216,61 @@
     UITableViewCell *cell = [self.myTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.index inSection:0]];
     
     cell.detailTextLabel.text = [dateFormatter stringFromDate:select];
+    
+    self.DateStr = [dateFormatter stringFromDate:select];
+}
+
+- (IBAction)backClick:(id)sender {
+    
+    
+    DISMISS_VIEWCONTROLLER;
+    
+}
+
+
+- (IBAction)backDone:(id)sender {
+    
+    self.returnBlock(self.DateStr,self.highStr,self.LowStr);
+    
+    DISMISS_VIEWCONTROLLER;
+    
+    
+}
+
+- (void)returnData:(ReturnBlock)block{
+
+    self.returnBlock = block;
 }
 
 #pragma mark 刻度条
 
+
+
 - (void)txhRrettyRuler:(TXHRulerScrollView *)rulerScrollView {
     
+    NSLog(@"%f",rulerScrollView.contentOffset.x);
     
-    if (rulerScrollView.superview == self.lowRuler) {
+    if (rulerScrollView.contentOffset.x <= 4 * 40 + 0.5) {
         
-        self.lowLabel.text = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
-        
+//        [UIView animateWithDuration:.2f animations:^{
+            rulerScrollView.contentOffset = CGPointMake(160+0.5, 0);
+//        }];
+
     }
+    
     
     if (rulerScrollView.superview == self.highRuler) {
         
         self.highLabel.text = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
-
+        self.highStr = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
     }
+    
+    if (rulerScrollView.superview == self.lowRuler) {
+        
+        self.lowLabel.text = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
+        self.LowStr = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
+    }
+    
    
     
     
@@ -205,8 +279,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
-
+        
 }
 
 /*

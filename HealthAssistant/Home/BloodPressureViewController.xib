@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BloodPressureViewController">
+            <connections>
+                <outlet property="backScrollView" destination="kqJ-VS-Qdo" id="vLf-LK-Qla"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpe-hC-yNs">
+                    <rect key="frame" x="187" y="601" width="188" height="66"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="20" maxX="15" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="75" minY="0.0" maxX="0.0" maxY="20"/>
+                    <state key="normal" image="手动输入">
+                        <attributedString key="attributedTitle">
+                            <fragment content="手动输入">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="18" name=".PingFangSC-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
+                    <connections>
+                        <action selector="Input:" destination="-1" eventType="touchUpInside" id="aju-7g-TGS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpo-xI-gaa">
+                    <rect key="frame" x="0.0" y="601" width="188" height="66"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="20" maxX="20" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="20"/>
+                    <state key="normal" title="拍照" image="拍照">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="TakePhoto:" destination="-1" eventType="touchUpInside" id="4Jf-pu-NiQ"/>
+                    </connections>
+                </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqJ-VS-Qdo">
+                    <rect key="frame" x="30" y="64" width="345" height="537"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="kpo-xI-gaa" secondAttribute="bottom" id="8d7-Wh-Ave"/>
+                <constraint firstItem="kpo-xI-gaa" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="CQ3-pd-dBr"/>
+                <constraint firstItem="kpo-xI-gaa" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="D1x-Yv-nby"/>
+                <constraint firstItem="gpe-hC-yNs" firstAttribute="height" secondItem="kpo-xI-gaa" secondAttribute="height" id="M52-Gg-cqB"/>
+                <constraint firstItem="kqJ-VS-Qdo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="Qd4-fY-jHB"/>
+                <constraint firstAttribute="trailing" secondItem="gpe-hC-yNs" secondAttribute="trailing" id="Zad-Hc-pav"/>
+                <constraint firstItem="gpe-hC-yNs" firstAttribute="width" secondItem="kpo-xI-gaa" secondAttribute="width" id="bpa-UG-tGo"/>
+                <constraint firstItem="kqJ-VS-Qdo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="chK-Ps-Dal"/>
+                <constraint firstAttribute="bottom" secondItem="gpe-hC-yNs" secondAttribute="bottom" id="gY0-Ce-4Hl"/>
+                <constraint firstAttribute="trailing" secondItem="kqJ-VS-Qdo" secondAttribute="trailing" id="lhc-M8-wbO"/>
+                <constraint firstItem="kpo-xI-gaa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ugJ-C3-bED"/>
+                <constraint firstItem="kpo-xI-gaa" firstAttribute="top" secondItem="kqJ-VS-Qdo" secondAttribute="bottom" id="xZL-QF-TPR"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="kqJ-VS-Qdo"/>
+                </mask>
+            </variation>
+        </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ml6-f2-o10">
+            <rect key="frame" x="0.0" y="0.0" width="188" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+            <inset key="titleEdgeInsets" minX="0.0" minY="20" maxX="20" maxY="0.0"/>
+            <inset key="imageEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="20"/>
+            <state key="normal" title="拍照" image="拍照">
+                <color key="titleColor" red="0.15686274509803921" green="0.75294117647058822" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+            </state>
+            <point key="canvasLocation" x="382" y="63"/>
+        </button>
+    </objects>
+    <resources>
+        <image name="手动输入" width="20" height="20"/>
+        <image name="拍照" width="20" height="20"/>
+    </resources>
+</document>

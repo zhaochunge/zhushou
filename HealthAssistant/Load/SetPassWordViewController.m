@@ -13,6 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *repectPaswd;
+@property (nonatomic,assign) BOOL doSomeThing;
+
+
 - (IBAction)finish:(id)sender;
 
 @end
@@ -37,22 +40,73 @@
 
 #pragma mark 完成注册
 - (IBAction)finish:(id)sender {
+    
+    if (_doSomeThing) return;
+    
+    
+    _doSomeThing = YES;
+
     if ([_password.text isEqualToString:_repectPaswd.text]) {
         
-        HomeViewController *homeVC = [[HomeViewController alloc] init];
-        [self presentViewController:homeVC animated:YES completion:^{
+        NSString *num = USERDEFAULTS_GET(USER_PHONENUM);
+        
+        NSLog(@"%@",[UrlString registwith:num loginPwd:_password.text]);
+        
+        [XHNetworking GET:[UrlString registwith:num loginPwd:_password.text] parameters:nil success:^(id responseObject) {
+            
+            _doSomeThing = NO;
+
+            
+            if (responseObject != nil) {
+                
+                
+                
+                if ([responseObject[@"status"] integerValue] == 1) {
+                    
+                    [_password resignFirstResponder];
+                    [_repectPaswd resignFirstResponder];
+
+                    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGED object:@YES];
+
+                }else{
+                
+                    [self alertViewWith:@"提示" message:responseObject[@"msg"]];
+
+                }
+               
+                
+                
+            }
+            
+            
+            
+        } failure:^(NSError *error) {
+            
             
         }];
         
+
+        
+      
+        
         
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"两次密码输入不一致" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [self.view addSubview:alert];
-        [alert show];
+        
+        _doSomeThing = NO;
+
+        [self alertViewWith:@"提示" message:@"密码不一致"];
     }
     
     
 }
+
+- (IBAction)back:(id)sender {
+    
+    DISMISS_VIEWCONTROLLER;
+    
+}
+
+
 
 #pragma mark 回收键盘
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

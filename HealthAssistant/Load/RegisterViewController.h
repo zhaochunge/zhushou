@@ -6,8 +6,10 @@
 //  Copyright © 2016年 zcg. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface RegisterViewController : UIViewController
+
+@interface RegisterViewController : BaseViewController
 
 @end

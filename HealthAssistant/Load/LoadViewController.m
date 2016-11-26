@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *loadName;
 @property (weak, nonatomic) IBOutlet UITextField *passWord;
 - (IBAction)load:(id)sender;
-
+@property (nonatomic,assign)BOOL doSomeThing;
 @end
 
 @implementation LoadViewController
@@ -29,13 +29,13 @@
     self.view.backgroundColor = [UIColor whiteColor];
     _loadName.delegate = self;
     _passWord.delegate = self;
-    
-    UIImageView *userimage=[UIImageView new];
+
+    UIImageView *userimage=[[UIImageView alloc] initWithFrame:CGRectMake(20, 0, 25, 25)];
     userimage.image = [UIImage imageNamed:@"用户"];
     _loadName.leftView = userimage;
     _loadName.leftViewMode = UITextFieldViewModeAlways;
     
-    UIImageView *passWordimage=[[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 25, 25)];
+    UIImageView *passWordimage=[[UIImageView alloc] initWithFrame:CGRectMake(20, 0, 25, 25)];
     passWordimage.image = [UIImage imageNamed:@"密码"];
     _passWord.leftView=passWordimage;
     _passWord.leftViewMode = UITextFieldViewModeAlways;
@@ -63,25 +63,56 @@
 - (IBAction)resignBtn:(id)sender {
     
     RegisterViewController *regVC = [[RegisterViewController alloc] init];
-    [self presentViewController:regVC animated:YES completion:^{
-        
-    }];
+    
+
+    
+    PRESENT_VIEWCONTROLLER(regVC, YES);
     
     
 }
 #pragma mark 登录
 - (IBAction)load:(id)sender {
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGED object:@YES];
+
+    
+    if (_doSomeThing) return;
+
+    _doSomeThing = YES;
+
     if (_loadName.text.length>0 && _passWord.text.length>0) {
-        HomeViewController *home = [HomeViewController new];
-//        InputViewController *home = [InputViewController new];
-        [self presentViewController:home animated:YES completion:^{
+       
+        
+        
+        
+        [XHNetworking GET:[UrlString loginWith:_loadName.text loginPwd:_passWord.text] parameters:nil success:^(id responseObject) {
+            
+            _doSomeThing = NO;
+            if ([responseObject[@"status"] integerValue] == 1) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGED object:@YES];
+            }
+            else{
+            
+                [self alertViewWith:@"提示" message:responseObject[@"msg"]];
+            }
+            
+        } failure:^(NSError *error) {
+            
             
         }];
+        
+        
+     
+        
+        
+        
+        
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"账户名或密码不正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [self.view addSubview:alert];
-        [alert show];
+        
+        
+        [self alertViewWith:@"提示" message:@"请输入手机号或者密码"];
+        
+        _doSomeThing = NO;
     }
     
     
