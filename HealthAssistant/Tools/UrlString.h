@@ -27,4 +27,12 @@
 + (NSString *)upBloodglucoseWithloginName:(NSString *)loginName bloodglucose:(double)bloodglucose time:(NSInteger)time;
 //获取血糖信息接口
 + (NSString *)getBloodglucoseWithLoginName:(NSString *)loginName;
+//上传血压信息接口
++ (NSString *)upBloodPressureWithloginName:(NSString *)loginName highpressure:(int)highpressure lowpressure:(int)lowpressure time:(NSInteger)time;
+//获取血压信息接口
++ (NSString *)getBloodPressureWithLoginName:(NSString *)loginName;
+//上传心率信息接口
++ (NSString *)upHeartRateWithloginName:(NSString *)loginName HeartRate:(int)HeartRate time:(NSInteger)time;
+//获取心率信息接口
++ (NSString *)getHeartRateWithLoginName:(NSString *)loginName;
 @end

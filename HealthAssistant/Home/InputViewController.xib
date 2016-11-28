@@ -13,9 +13,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputViewController">
             <connections>
                 <outlet property="backView" destination="yic-xA-mu7" id="hm6-Xt-e7s"/>
+                <outlet property="dataType" destination="hQV-SW-AnK" id="QwT-2Z-yBe"/>
+                <outlet property="dataUnit" destination="hQV-SW-AnK" id="o8a-FE-iee"/>
                 <outlet property="downView" destination="qmT-h0-SqO" id="aPL-38-ENk"/>
                 <outlet property="highLabel" destination="Zd7-aq-B82" id="ojX-ae-Yc7"/>
+                <outlet property="highLabelView" destination="rHb-ZS-yPr" id="u9Q-OK-t6T"/>
                 <outlet property="lowLabel" destination="UFO-sz-1en" id="Jxz-nJ-NHR"/>
+                <outlet property="lowLabelView" destination="yAB-f4-wUi" id="dba-iF-DYx"/>
                 <outlet property="timePicker" destination="6Ow-gW-RTc" id="IQY-HB-epb"/>
                 <outlet property="upView" destination="CiL-Fb-nIB" id="U1L-IM-hru"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

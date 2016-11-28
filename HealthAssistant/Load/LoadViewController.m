@@ -75,7 +75,7 @@
 #pragma mark 登录
 - (IBAction)load:(id)sender {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGED object:@YES];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGED object:@YES];
 
     
     if (_doSomeThing) return;
@@ -91,6 +91,9 @@
             
             _doSomeThing = NO;
             if ([responseObject[@"status"] integerValue] == 1) {
+                
+                USERDEFAULTS_SET(_loadName.text, USER_LOGINNAME);
+                
                 [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGED object:@YES];
             }
             else{

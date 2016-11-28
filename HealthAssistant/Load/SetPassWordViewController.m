@@ -48,9 +48,8 @@
 
     if ([_password.text isEqualToString:_repectPaswd.text]) {
         
-        NSString *num = USERDEFAULTS_GET(LOGINNAME);
+        NSString *num = USERDEFAULTS_GET(USER_LOGINNAME);
         
-        NSLog(@"%@",[UrlString registwith:num loginPwd:_password.text]);
         
         [XHNetworking GET:[UrlString registwith:num loginPwd:_password.text] parameters:nil success:^(id responseObject) {
             

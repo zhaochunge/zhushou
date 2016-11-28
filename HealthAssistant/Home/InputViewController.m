@@ -25,12 +25,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *highLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lowLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *highLabelView;
+@property (weak, nonatomic) IBOutlet UIView *lowLabelView;
 
+
+//种类
+@property (weak, nonatomic) IBOutlet UILabel *dataType;
+//单位
+@property (weak, nonatomic) IBOutlet UILabel *dataUnit;
 
 @property (nonatomic,copy) NSString *highStr;
 @property (nonatomic,copy) NSString *LowStr;
 @property (nonatomic,copy) NSString *DateStr;
-
+@property (nonatomic,assign) NSInteger timeNum;
 @end
 
 @implementation InputViewController
@@ -47,6 +54,7 @@
     self.LowStr = @"100";
     self.DateStr = [self getDateHM];
     
+    self.timeNum = [[NSDate date] timeIntervalSince1970];
     
     
     [self createView];
@@ -86,16 +94,6 @@
     //创建刻度尺
     
     
-    self.lowRuler = [[TXHRrettyRuler alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth - 20 * 2, 60)];
-    
-    self.lowRuler.layer.cornerRadius = 5.f;
-    self.lowRuler.layer.borderWidth = 1;
-    
-    self.lowRuler.rulerDeletate = self;
-    
-    [self.lowRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
-    [self.downView addSubview:self.lowRuler];
-
     
     self.highRuler = [[TXHRrettyRuler alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth - 20 * 2, 60)];
     
@@ -105,6 +103,43 @@
     self.highRuler.rulerDeletate = self;
     [self.highRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
     [self.upView addSubview:self.highRuler];
+
+   
+    
+    if (_ViewState == BloodGlucose) {
+        
+        
+        _dataType.text = @"血糖";
+        
+        _lowLabelView.hidden = YES;
+        
+        return;
+    }
+    
+    
+    if (_ViewState == HeartRate) {
+        
+        _dataType.text = @"心率";
+
+        
+        _lowLabelView.hidden = YES;
+        
+        
+        return;
+    }
+    
+    
+    self.lowRuler = [[TXHRrettyRuler alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth - 20 * 2, 60)];
+    
+    self.lowRuler.layer.cornerRadius = 5.f;
+    self.lowRuler.layer.borderWidth = 1;
+    
+    self.lowRuler.rulerDeletate = self;
+    
+    [self.lowRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
+    
+    
+    [self.downView addSubview:self.lowRuler];
 
    
 }
@@ -218,6 +253,8 @@
     cell.detailTextLabel.text = [dateFormatter stringFromDate:select];
     
     self.DateStr = [dateFormatter stringFromDate:select];
+    self.timeNum = [select timeIntervalSince1970];
+    
 }
 
 - (IBAction)backClick:(id)sender {
@@ -230,6 +267,37 @@
 
 - (IBAction)backDone:(id)sender {
     
+    switch (_ViewState) {
+        case BloodPressure:
+        {
+            NSLog(@"血压");
+            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:[_LowStr integerValue] time:self.timeNum];
+        }
+            break;
+        case BloodGlucose:
+        {
+            NSLog(@"血糖");
+            
+            
+            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:0 time:self.timeNum];
+  
+            
+        }
+            break;
+            case HeartRate:
+            
+        {
+            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:0 time:self.timeNum];
+            NSLog(@"心率");
+        }
+        default:
+            break;
+    }
+    
+    
+
+    
+
     self.returnBlock(self.DateStr,self.highStr,self.LowStr);
     
     DISMISS_VIEWCONTROLLER;
@@ -250,11 +318,9 @@
     
     NSLog(@"%f",rulerScrollView.contentOffset.x);
     
-    if (rulerScrollView.contentOffset.x <= 4 * 50 + 0.5) {
+    if (rulerScrollView.contentOffset.x <= 6 * 40 + 0.5) {
         
-//        [UIView animateWithDuration:.2f animations:^{
-            rulerScrollView.contentOffset = CGPointMake(160+0.5, 0);
-//        }];
+            rulerScrollView.contentOffset = CGPointMake(6 * 40+0.5, 0);
 
     }
     
@@ -274,6 +340,55 @@
    
     
     
+}
+
+- (void)upLoadWithfirstParameter:(double)firstParameter secParameter:(double)secParameter time:(NSInteger)time{
+
+    NSString *urlStr;
+    
+    switch (_ViewState) {
+        case BloodPressure:
+        {
+            NSLog(@"血压");
+            
+            urlStr = [UrlString upBloodPressureWithloginName:USERDEFAULTS_GET(USER_LOGINNAME) highpressure:firstParameter lowpressure:secParameter time:time];
+            
+            
+        }
+            break;
+        case BloodGlucose:
+        {
+            NSLog(@"血糖");
+            
+            urlStr = [UrlString upBloodglucoseWithloginName:USERDEFAULTS_GET(USER_LOGINNAME) bloodglucose:firstParameter time:time];
+            
+        }
+            break;
+        case HeartRate:
+            
+        {
+            urlStr = [UrlString upHeartRateWithloginName:USERDEFAULTS_GET(USER_LOGINNAME) HeartRate:firstParameter time:time];
+            NSLog(@"心率");
+        }
+        default:
+            break;
+    }
+
+    
+    
+    
+    
+    
+    [XHNetworking GET:urlStr parameters:nil success:^(id responseObject) {
+        
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+    
+
+
 }
 
 - (void)didReceiveMemoryWarning {

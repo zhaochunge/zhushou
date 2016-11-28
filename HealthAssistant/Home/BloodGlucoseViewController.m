@@ -10,6 +10,9 @@
 
 @interface BloodGlucoseViewController ()
 
+@property (nonatomic,strong)NSMutableArray *xAxisValues;
+@property (nonatomic,strong)NSMutableArray *plottingValues;
+
 @end
 
 @implementation BloodGlucoseViewController
@@ -19,17 +22,48 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"血糖图";
+    
+    self.xAxisValues = [NSMutableArray array];
+    
+    self.plottingValues = [NSMutableArray array];
+    
+    self.xAxisValues = [NSMutableArray arrayWithObjects:@{@"1":@"11.26"},@{@"2":@"11.27"}, nil];
+    
+    self.plottingValues = [NSMutableArray arrayWithObjects:@{@"1":@4.36},@{@"2":@5.28}, nil];
+    
+    
     [self createData];
     [self createView];
-    
     
 }
 
 
 - (void)createData{
 
-    [XHNetworking GET:[UrlString getBloodglucoseWithLoginName:USERDEFAULTS_GET(LOGINNAME)] parameters:nil success:^(id responseObject) {
+    [XHNetworking GET:[UrlString getBloodglucoseWithLoginName:USERDEFAULTS_GET(USER_LOGINNAME)] parameters:nil success:^(id responseObject) {
         
+        if ([responseObject[@"status"] integerValue] == 1) {
+            
+        
+        
+        int i = 0;
+        
+        for (NSDictionary *dic in responseObject[@"content"]) {
+            
+            i++;
+            
+            NSDictionary *temp1 = @{[NSString stringWithFormat:@"%d",i] : dic[@"createtime"]};
+            
+            NSDictionary *temp2 = @{[NSString stringWithFormat:@"%d",i] : dic[@"bloodglucose"]};
+            
+            
+            
+            [self.xAxisValues addObject:temp1];
+            [self.plottingValues addObject:temp2];
+        }
+        
+        
+        }
         
     } failure:^(NSError *error) {
         
@@ -61,32 +95,35 @@
     _lineGraph.themeAttributes = _themeAttributes;
     
     
-    _lineGraph.yAxisRange = @(180);
-    _lineGraph.minY = 50;
+    _lineGraph.yAxisRange = @(10);
+    _lineGraph.minY = 1;
     _lineGraph.yAxisSuffix = @"";
     
-    _lineGraph.xAxisValues = @[
-                               @{ @1 : @"11/16" },
-                               @{ @2 : @"11/17" },
-//                               @{ @3 : @"11/18" },
-//                               @{ @4 : @"11/19" },
-//                               @{ @5 : @"11/20" },
-//                               @{ @6 : @"今天" }
-                               ];
+    _lineGraph.xAxisValues = _xAxisValues;
+//    _lineGraph.xAxisValues = @[@{@"1":@"11.26"},@{@"2":@"11.27"}];
+
+    
     SHPlot *_plot1 = [[SHPlot alloc] init];
     
-    _plot1.plottingValues = @[
-                              @{ @1 : @107 },
-                              @{ @2 : @95 },
-//                              @{ @3 : @50 },
-//                              @{ @4 : @112 },
-//                              @{ @5 : @94 },
-//                              @{ @6 : @104 }
-                              ];
+    _plot1.plottingValues = _plottingValues;
+//    _plot1.plottingValues = @[@{@"1":@4.36},@{@"2":@5.28}];
+
     
-    NSArray *arr = @[@"107",@"95",
-//                     @"", @"112", @"94", @"104"
-                     ];
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    int i = 0;
+    for (NSDictionary *dic in _plottingValues) {
+        
+        i++;
+        NSNumber *num = dic[[NSString stringWithFormat:@"%d",i]];
+        
+        NSString *str = [NSString stringWithFormat:@"%@",num];
+        
+        [arr addObject:str];
+        
+    }
+
     _plot1.plottingPointsLabels = arr;
     //背景色,折线宽度,折线颜色,原点颜色
     NSDictionary *_plotThemeAttributes = @{
@@ -117,6 +154,9 @@
 - (IBAction)Input:(id)sender {
     
     InputViewController *vc = [InputViewController new];
+    
+    vc.ViewState = BloodGlucose;
+    
     
     PRESENT_VIEWCONTROLLER(vc, YES);
     

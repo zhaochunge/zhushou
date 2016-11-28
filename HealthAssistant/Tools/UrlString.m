@@ -58,6 +58,28 @@
 
     return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=getBloodGlucose&loginName=%@",BASEURL,loginName];
 }
+//上传血压信息接口
++ (NSString *)upBloodPressureWithloginName:(NSString *)loginName highpressure:(int)highpressure lowpressure:(int)lowpressure time:(NSInteger)time{
+
+    return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=upBloodPressure&loginName=%@&highpressure=%d&lowpressure=%d&time=%ld",BASEURL,loginName,highpressure,lowpressure,time];
+}
+//获取血压信息接口
++ (NSString *)getBloodPressureWithLoginName:(NSString *)loginName{
+
+    return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=getBloodPressure&loginName=%@",BASEURL,loginName];
+}
+//上传心率信息接口
++ (NSString *)upHeartRateWithloginName:(NSString *)loginName HeartRate:(int)HeartRate time:(NSInteger)time{
+    
+    return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=upHeartRate&loginName=%@&heartRate=%d&time=%ld",BASEURL,loginName,HeartRate,time];
+}
+//获取心率信息接口
++ (NSString *)getHeartRateWithLoginName:(NSString *)loginName{
+    
+    return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=getHeartRate&loginName=%@",BASEURL,loginName];
+}
+
+
 
 
 

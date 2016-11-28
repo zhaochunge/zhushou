@@ -10,10 +10,18 @@
 #import "BaseViewController.h"
 typedef void (^ReturnBlock)(NSString *date,NSString *high,NSString *low);
 
+typedef enum inputState{
+    HeartRate =0,
+    BloodGlucose,
+    BloodPressure
+    
+}InputState;
+
+
 @interface InputViewController : BaseViewController
 
 @property (nonatomic,strong)ReturnBlock returnBlock;
-
+@property (nonatomic,assign)InputState ViewState;
 
 - (void)returnData:(ReturnBlock)block;
 @end

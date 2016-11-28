@@ -16,6 +16,9 @@
 @property (nonatomic ,strong)NSMutableArray *plottingValues;
 @property (nonatomic ,strong)NSMutableArray *SecPlottingValues;
 
+@property (nonatomic ,strong)NSMutableArray *high;
+@property (nonatomic ,strong)NSMutableArray *low;
+
 @property (nonatomic, strong)SHLineGraphView *lineGraph;
 @property (nonatomic, strong)SHPlot *plot;
 @end
@@ -25,57 +28,109 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-
-    
     self.title = @"血压图";
+    
+    _xAxisValues = [NSMutableArray array];
+    _plottingValues = [NSMutableArray array];
+    _SecPlottingValues = [NSMutableArray array];
+    _high = [NSMutableArray array];
+    _low = [NSMutableArray array];
     [self createData];
 
-    [self createView];
 }
 
 
 - (void)createData{
+    
+    
+    
+    
+    [XHNetworking GET:[UrlString getBloodPressureWithLoginName:USERDEFAULTS_GET(USER_LOGINNAME)] parameters:nil success:^(id responseObject) {
+        
+        
+        if ([responseObject[@"status"] integerValue] == 1) {
+            
+        
+        
+        int i = 0;
+        
+        for (NSDictionary *dic in responseObject[@"content"]) {
+            
+            i++;
+            
+            NSDictionary *temp1 = @{[NSString stringWithFormat:@"%d",i] : [dic[@"createtime"] substringToIndex:10]};
+            NSDictionary *temp2 = @{[NSString stringWithFormat:@"%d",i] : @([dic[@"highpressure"] integerValue])};
+            NSDictionary *temp3 = @{[NSString stringWithFormat:@"%d",i] : @([dic[@"lowpressure"] integerValue])};
+            
+            
+            [self.xAxisValues addObject:temp1];
+            [self.plottingValues addObject:temp2];
+            [self.SecPlottingValues addObject:temp3];
+        }
 
-    _xAxisValues = [NSMutableArray arrayWithObjects:@{ @"1" : @"11/16" },
-                    @{ @"2" : @"11/17" },
-                    @{ @"3" : @"11/18" },
-                    @{ @"4" : @"11/19" },
-                    @{ @"5" : @"11/20" },
-                    @{ @"6" : @"今天" },
-                    @{ @"7" : @"明天"},
-                    @{ @"8" : @"后天" },
-                    @{ @"9" : @"大后天"},
-                    @{ @"10" : @"阿萨德"}, nil];
+            [self createView];
+
+        }
+        
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
     
     
-    _plottingValues = [NSMutableArray arrayWithObjects:@{ @"1" : @107 },
-                       @{ @"2" : @95 },
-                       @{ @"3" : @120 },
-                       @{ @"4" : @112 },
-                       @{ @"5" : @164 },
-                       @{ @"6" : @104 },
-                       @{ @"7" : @99},
-                       @{ @"8" : @139},
-                       @{ @"9" : @146},
-                       @{ @"10" : @130}, nil];
     
-    _SecPlottingValues = [NSMutableArray arrayWithObjects:@{ @"1" : @60 },
-                          @{ @"2" : @85 },
-                          @{ @"3" : @70 },
-                          @{ @"4" : @60 },
-                          @{ @"5" : @83 },
-                          @{ @"6" : @79 },
-                          @{ @"7" : @89},
-                          @{ @"8" : @89},
-                          @{ @"9" : @99},
-                          @{ @"10" : @70}, nil];
+//    
+//    
+//    
+//    
+//    
+//
+//    _xAxisValues = [NSMutableArray arrayWithObjects:@{ @"1" : @"11/16" },
+//                    @{ @"2" : @"11/17" },
+//                    @{ @"3" : @"11/18" },
+//                    @{ @"4" : @"11/19" },
+//                    @{ @"5" : @"11/20" },
+//                    @{ @"6" : @"今天" },
+//                    @{ @"7" : @"明天"},
+//                    @{ @"8" : @"后天" },
+//                    @{ @"9" : @"大后天"},
+//                    @{ @"10" : @"阿萨德"}, nil];
+//    
+//    
+//    _plottingValues = [NSMutableArray arrayWithObjects:@{ @"1" : @107 },
+//                       @{ @"2" : @95 },
+//                       @{ @"3" : @120 },
+//                       @{ @"4" : @112 },
+//                       @{ @"5" : @164 },
+//                       @{ @"6" : @104 },
+//                       @{ @"7" : @99},
+//                       @{ @"8" : @139},
+//                       @{ @"9" : @146},
+//                       @{ @"10" : @130}, nil];
+//    
+//    _SecPlottingValues = [NSMutableArray arrayWithObjects:@{ @"1" : @60 },
+//                          @{ @"2" : @85 },
+//                          @{ @"3" : @70 },
+//                          @{ @"4" : @60 },
+//                          @{ @"5" : @83 },
+//                          @{ @"6" : @79 },
+//                          @{ @"7" : @89},
+//                          @{ @"8" : @89},
+//                          @{ @"9" : @99},
+//                          @{ @"10" : @70}, nil];
 
 }
 - (void)createView{
     
 
-   _lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 90, ScreenWidth/6*[_xAxisValues count], 480)];
+    if (_xAxisValues.count <= 6) {
+        _lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 90, ScreenWidth, 480)];
+
+    }else{
+        _lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 90, ScreenWidth/6*[_xAxisValues count], 480)];
+
+    }
     
     
     _lineGraph.backgroundColor = [UIColor clearColor];
@@ -110,19 +165,17 @@
 
     _plot.SecPlottingValues = _SecPlottingValues;
     
-    NSMutableArray *high = [NSMutableArray array];
-    NSMutableArray *low = [NSMutableArray array];
+
 
     
     int i = 0;
     for (NSDictionary *dic in _plottingValues) {
         
         i++;
-        NSNumber *num = dic[[NSString stringWithFormat:@"%d",i]];
         
-        NSString *str = [NSString stringWithFormat:@"%@",num];
+        NSString *str = [NSString stringWithFormat:@"%@",dic[[NSString stringWithFormat:@"%d",i]]];
         
-        [high addObject:str];
+        [_high addObject:str];
         
     }
     
@@ -131,13 +184,14 @@
         
         k++;
 
-        [low addObject: [NSString stringWithFormat:@"%@",dic[[NSString stringWithFormat:@"%d",k]]]];
+        [_low addObject: [NSString stringWithFormat:@"%@",dic[[NSString stringWithFormat:@"%d",k]]]];
         
     }
 
     
-    _plot.plottingPointsLabels = high;
-    _plot.SecplottingPointsLabels = low;
+    _plot.plottingPointsLabels = _high;
+    
+    _plot.SecplottingPointsLabels = _low;
     NSDictionary *_plotThemeAttributes = @{
                                            kPlotFillColorKey : [UIColor colorWithRed:0.47 green:0.75 blue:0.78 alpha:0],
                                            kPlotStrokeWidthKey : @1,
@@ -168,7 +222,7 @@
     
     InputViewController *vc = [InputViewController new];
     
-
+    vc.ViewState = BloodPressure;
     
     PRESENT_VIEWCONTROLLER(vc, YES);
     
@@ -177,14 +231,20 @@
         
         
         [_xAxisValues addObject:@{@(_xAxisValues.count + 1): date}];
-        _lineGraph.xAxisValues = _xAxisValues;
+//        _lineGraph.xAxisValues = _xAxisValues;
         
         [_plottingValues addObject:@{@(_plottingValues.count + 1) : high}];
-        _plot.plottingValues = _plottingValues;
+//        _plot.plottingValues = _plottingValues;
         
         [_SecPlottingValues addObject:@{@(_SecPlottingValues.count +1):low}];
         
-        _plot.SecPlottingValues = _SecPlottingValues;
+//        _plot.SecPlottingValues = _SecPlottingValues;
+        
+        [_high addObject:high];
+        [_low addObject:low];
+        
+        
+        
         
         [_lineGraph removeFromSuperview];
         [self createView];

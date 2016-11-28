@@ -21,60 +21,30 @@
     
     self.title = @"心率图";
     
-   
+    [self createData];
     [self createView];
 }
 
-- (void)createView{
+- (void)createData{
 
-
-    // test line chart
-    NSArray* plottingDataValues1 =@[@80, @133, @112, @73,@66, @87,@153, @133, @74,@55];
-    //    NSArray* plottingDataValues2 =@[@24, @23, @22, @20,@53, @22,@33, @33, @54,@58, @43];
-    
-    self.lineChartView.max = 180;
-    self.lineChartView.min = 50;
-    
-    
-    self.lineChartView.interval = (self.lineChartView.max-self.lineChartView.min)/13;
-    
-    NSMutableArray* yAxisValues = [@[] mutableCopy];
-    for (int i=0; i<14; i++) {
-        NSString* str = [NSString stringWithFormat:@"%.f", self.lineChartView.min+self.lineChartView.interval*i];
-        [yAxisValues addObject:str];
-    }
-    
-    self.lineChartView.xAxisValues = @[@"", @"", @"",@"", @"", @"",@"", @"", @"",@"	"];
-    self.lineChartView.yAxisValues = yAxisValues;
-    self.lineChartView.axisLeftLineWidth = 39;
-    
-    
-    PNPlot *plot1 = [[PNPlot alloc] init];
-    plot1.plottingValues = plottingDataValues1;
-    
-    plot1.lineColor = [UIColor blueColor];
-    plot1.lineWidth = 0.5;
-    
-    [self.lineChartView addPlot:plot1];
-    
-    
-    PNPlot *plot2 = [[PNPlot alloc] init];
-    
-    //    plot2.plottingValues = plottingDataValues2;
-    
-    plot2.lineColor = [UIColor redColor];
-    plot2.lineWidth = 1;
-    
-    [self.lineChartView  addPlot:plot2];
-
+    [XHNetworking GET:[UrlString getHeartRateWithLoginName:USERDEFAULTS_GET(USER_LOGINNAME)] parameters:nil success:^(id responseObject) {
+       
+        
+        
+        
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
 
 
 
 }
 
-
-
-- (void)createView1{
+- (void)createView{
 
     SHLineGraphView *_lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 90, ScreenWidth, 480)];
     _lineGraph.backgroundColor = [UIColor clearColor];
@@ -150,6 +120,8 @@
 - (IBAction)input:(id)sender {
     
     InputViewController *vc = [InputViewController new];
+    
+    vc.ViewState = HeartRate;
     
     PRESENT_VIEWCONTROLLER(vc, YES);
     

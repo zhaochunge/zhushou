@@ -55,6 +55,9 @@
                         <constraint firstAttribute="height" constant="30" id="MxP-qD-HHm"/>
                     </constraints>
                     <state key="normal" image="叉"/>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="0Q4-YZ-m3U"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请重新设定密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg7-wq-JRf">
                     <rect key="frame" x="35" y="128" width="305" height="21"/>
@@ -94,6 +97,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入新密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hvo-1e-cmu">
                     <rect key="frame" x="35" y="167" width="305" height="30"/>
                     <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
             </subviews>

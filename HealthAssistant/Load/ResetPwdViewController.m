@@ -87,6 +87,13 @@
 
 
 
+- (IBAction)back:(id)sender {
+    
+    
+    
+    DISMISS_VIEWCONTROLLER;
+    
+}
 
 
 

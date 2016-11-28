@@ -90,7 +90,7 @@
     if (phoneTrue) {
         
         
-        USERDEFAULTS_SET(_phone.text, LOGINNAME);
+        USERDEFAULTS_SET(_phone.text, USER_LOGINNAME);
         
         [XHNetworking GET:[UrlString getVerifyCodeWith:_phone.text] parameters:nil success:^(id responseObject) {
             
