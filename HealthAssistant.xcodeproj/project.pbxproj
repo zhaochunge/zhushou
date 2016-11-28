@@ -74,6 +74,12 @@
 		C0A84F141DE592C80049EF2F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0A84F121DE592C80049EF2F /* SettingViewController.xib */; };
 		C0A84F181DE595B00049EF2F /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A84F161DE595B00049EF2F /* SettingTableViewCell.m */; };
 		C0A84F191DE595B00049EF2F /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0A84F171DE595B00049EF2F /* SettingTableViewCell.xib */; };
+		C0B997011DE958EE0080BB62 /* ForgetNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B996FF1DE958EE0080BB62 /* ForgetNumViewController.m */; };
+		C0B997021DE958EE0080BB62 /* ForgetNumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B997001DE958EE0080BB62 /* ForgetNumViewController.xib */; };
+		C0B997061DE9603D0080BB62 /* ForgetVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B997041DE9603D0080BB62 /* ForgetVerifyViewController.m */; };
+		C0B997071DE9603D0080BB62 /* ForgetVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B997051DE9603D0080BB62 /* ForgetVerifyViewController.xib */; };
+		C0B9970B1DE965CD0080BB62 /* ResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B997091DE965CD0080BB62 /* ResetPwdViewController.m */; };
+		C0B9970C1DE965CD0080BB62 /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B9970A1DE965CD0080BB62 /* ResetPwdViewController.xib */; };
 		C0D72BC51DE6C8480055AD50 /* PNLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D72BC21DE6C8480055AD50 /* PNLineChartView.m */; };
 		C0D72BC61DE6C8480055AD50 /* PNPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D72BC41DE6C8480055AD50 /* PNPlot.m */; };
 		C0D72BCA1DE6C8B50055AD50 /* LineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D72BC81DE6C8B50055AD50 /* LineViewController.m */; };
@@ -235,6 +241,15 @@
 		C0A84F151DE595B00049EF2F /* SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
 		C0A84F161DE595B00049EF2F /* SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
 		C0A84F171DE595B00049EF2F /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		C0B996FE1DE958EE0080BB62 /* ForgetNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetNumViewController.h; sourceTree = "<group>"; };
+		C0B996FF1DE958EE0080BB62 /* ForgetNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetNumViewController.m; sourceTree = "<group>"; };
+		C0B997001DE958EE0080BB62 /* ForgetNumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetNumViewController.xib; sourceTree = "<group>"; };
+		C0B997031DE9603D0080BB62 /* ForgetVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetVerifyViewController.h; sourceTree = "<group>"; };
+		C0B997041DE9603D0080BB62 /* ForgetVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetVerifyViewController.m; sourceTree = "<group>"; };
+		C0B997051DE9603D0080BB62 /* ForgetVerifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetVerifyViewController.xib; sourceTree = "<group>"; };
+		C0B997081DE965CD0080BB62 /* ResetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdViewController.h; sourceTree = "<group>"; };
+		C0B997091DE965CD0080BB62 /* ResetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdViewController.m; sourceTree = "<group>"; };
+		C0B9970A1DE965CD0080BB62 /* ResetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPwdViewController.xib; sourceTree = "<group>"; };
 		C0D72BC11DE6C8480055AD50 /* PNLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLineChartView.h; sourceTree = "<group>"; };
 		C0D72BC21DE6C8480055AD50 /* PNLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLineChartView.m; sourceTree = "<group>"; };
 		C0D72BC31DE6C8480055AD50 /* PNPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNPlot.h; sourceTree = "<group>"; };
@@ -473,6 +488,15 @@
 				0440D6781DDED941006242E2 /* SetPassWordViewController.h */,
 				0440D6791DDED941006242E2 /* SetPassWordViewController.m */,
 				0440D67A1DDED941006242E2 /* SetPassWordViewController.xib */,
+				C0B996FE1DE958EE0080BB62 /* ForgetNumViewController.h */,
+				C0B996FF1DE958EE0080BB62 /* ForgetNumViewController.m */,
+				C0B997001DE958EE0080BB62 /* ForgetNumViewController.xib */,
+				C0B997031DE9603D0080BB62 /* ForgetVerifyViewController.h */,
+				C0B997041DE9603D0080BB62 /* ForgetVerifyViewController.m */,
+				C0B997051DE9603D0080BB62 /* ForgetVerifyViewController.xib */,
+				C0B997081DE965CD0080BB62 /* ResetPwdViewController.h */,
+				C0B997091DE965CD0080BB62 /* ResetPwdViewController.m */,
+				C0B9970A1DE965CD0080BB62 /* ResetPwdViewController.xib */,
 			);
 			path = Load;
 			sourceTree = "<group>";
@@ -763,10 +787,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C056E48D1DE518CE00E0490F /* BloodGlucoseViewController.xib in Resources */,
+				C0B9970C1DE965CD0080BB62 /* ResetPwdViewController.xib in Resources */,
 				0439A4081DE2CE5600D05E53 /* Info.plist in Resources */,
+				C0B997021DE958EE0080BB62 /* ForgetNumViewController.xib in Resources */,
 				C0E61F961DE3DE6C0096ED0C /* BaseViewController.xib in Resources */,
 				0440D62D1DDE8803006242E2 /* LaunchScreen.storyboard in Resources */,
 				C0D72BCB1DE6C8B50055AD50 /* LineViewController.xib in Resources */,
+				C0B997071DE9603D0080BB62 /* ForgetVerifyViewController.xib in Resources */,
 				0440D62A1DDE8803006242E2 /* Assets.xcassets in Resources */,
 				C0A84F191DE595B00049EF2F /* SettingTableViewCell.xib in Resources */,
 				0440D6801DDED941006242E2 /* SetPassWordViewController.xib in Resources */,
@@ -836,14 +863,17 @@
 				0440D61F1DDE8803006242E2 /* main.m in Sources */,
 				C0E61FA51DE435B80096ED0C /* PopoverView.m in Sources */,
 				C08ED35C1DE2EB7700BDC7D3 /* TXHRrettyRuler.m in Sources */,
+				C0B9970B1DE965CD0080BB62 /* ResetPwdViewController.m in Sources */,
 				C0E61F901DE3C64A0096ED0C /* InputViewController.m in Sources */,
 				C056E4C31DE5434600E0490F /* AFSecurityPolicy.m in Sources */,
 				C056E4CF1DE5434600E0490F /* UIProgressView+AFNetworking.m in Sources */,
 				0440D67B1DDED941006242E2 /* LoadViewController.m in Sources */,
 				C056E4CB1DE5434600E0490F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				C0F9510C1DE5780C0009998C /* UIBarButtonItem+KM.m in Sources */,
+				C0B997011DE958EE0080BB62 /* ForgetNumViewController.m in Sources */,
 				0440D6831DDED960006242E2 /* HomeViewController.m in Sources */,
 				0439A40B1DE2CE5600D05E53 /* MASConstraintMaker.m in Sources */,
+				C0B997061DE9603D0080BB62 /* ForgetVerifyViewController.m in Sources */,
 				0439A4121DE2CE5600D05E53 /* ViewController+MASAdditions.m in Sources */,
 				C0D72BC61DE6C8480055AD50 /* PNPlot.m in Sources */,
 				C056E4961DE51F4A00E0490F /* PhotoViewController.m in Sources */,

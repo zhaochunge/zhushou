@@ -24,8 +24,8 @@
 #define DISMISS_VIEWCONTROLLER [self dismissViewControllerAnimated:YES completion:nil];
 
 
-#define USER_PHONENUM @"UserPhoneNumber"
-#define USER_PASSWD @"UserPassWord"
+#define LOGINNAME @"UserLoginName"
+#define PASSWORD @"UserPassWord"
 #define LOGIN_STATE @"Loginstate"
 
 

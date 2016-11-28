@@ -45,7 +45,7 @@
                         <constraint firstAttribute="height" constant="21" id="abb-Xh-6f6"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.064626369786231347" green="0.30313344597275765" blue="0.69868700916230364" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.078431372549019607" green="0.47058823529411764" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10天内自动登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvg-4F-s1Q">
@@ -67,6 +67,9 @@
                     <state key="normal" title="忘记密码?">
                         <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="ForgetPwd:" destination="-1" eventType="touchUpInside" id="kiR-N3-2Ra"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOi-2E-nYX">
                     <rect key="frame" x="251" y="386" width="89" height="30"/>
@@ -99,7 +102,7 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxP-dx-4mV">
                     <rect key="frame" x="35" y="301" width="305" height="44"/>
-                    <color key="backgroundColor" red="0.074409539407439246" green="0.39762869015127261" blue="0.69868700920000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.078431372549019607" green="0.47058823529411764" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="19B-T6-0I4"/>
                     </constraints>

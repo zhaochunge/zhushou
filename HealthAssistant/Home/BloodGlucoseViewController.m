@@ -19,11 +19,30 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"血糖图";
-    
+    [self createData];
     [self createView];
     
     
 }
+
+
+- (void)createData{
+
+    [XHNetworking GET:[UrlString getBloodglucoseWithLoginName:USERDEFAULTS_GET(LOGINNAME)] parameters:nil success:^(id responseObject) {
+        
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+
+
+
+}
+
+
+
+
 
 - (void)createView{
     
@@ -49,22 +68,25 @@
     _lineGraph.xAxisValues = @[
                                @{ @1 : @"11/16" },
                                @{ @2 : @"11/17" },
-                               @{ @3 : @"11/18" },
-                               @{ @4 : @"11/19" },
-                               @{ @5 : @"11/20" },
-                               @{ @6 : @"今天" }
+//                               @{ @3 : @"11/18" },
+//                               @{ @4 : @"11/19" },
+//                               @{ @5 : @"11/20" },
+//                               @{ @6 : @"今天" }
                                ];
     SHPlot *_plot1 = [[SHPlot alloc] init];
     
     _plot1.plottingValues = @[
                               @{ @1 : @107 },
                               @{ @2 : @95 },
-                              @{ @3 : @50 },
-                              @{ @4 : @112 },
-                              @{ @5 : @94 },
-                              @{ @6 : @104 }];
+//                              @{ @3 : @50 },
+//                              @{ @4 : @112 },
+//                              @{ @5 : @94 },
+//                              @{ @6 : @104 }
+                              ];
     
-    NSArray *arr = @[@"107", @"95", @"", @"112", @"94", @"104"];
+    NSArray *arr = @[@"107",@"95",
+//                     @"", @"112", @"94", @"104"
+                     ];
     _plot1.plottingPointsLabels = arr;
     //背景色,折线宽度,折线颜色,原点颜色
     NSDictionary *_plotThemeAttributes = @{

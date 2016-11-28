@@ -11,6 +11,8 @@
 #import "HomeViewController.h"
 #import "InputViewController.h"
 #import "HomeViewController1.h"
+#import "ForgetNumViewController.h"
+
 
 @interface LoadViewController ()<UITextFieldDelegate>
 - (IBAction)resignBtn:(id)sender;
@@ -118,4 +120,19 @@
     
     
 }
+
+
+
+- (IBAction)ForgetPwd:(id)sender {
+    
+    
+    ForgetNumViewController *vc = [ForgetNumViewController new];
+    
+    PRESENT_VIEWCONTROLLER(vc, YES);
+    
+}
+
+
+
+
 @end

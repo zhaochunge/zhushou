@@ -17,5 +17,14 @@
 + (NSString *)registwith:(NSString *)phoneNum loginPwd:(NSString *)loginPwd;
 //登录接口
 + (NSString *)loginWith:(NSString *)loginName loginPwd:(NSString *)loginPwd;
-
+//忘记密码短信验证接口
++ (NSString *)getRestVerifyCodeWith:(NSString *)phoneNum;
+//验证找回密码短信接口
++ (NSString *)VerifyRestCode:(NSString *)verifyRestCode phoneNum:(NSString *)phoneNum;
+//找回密码接口
++ (NSString *)resetPassWordWithloginName:(NSString *)loginName loginPwd:(NSString *)loginPwd;
+//上传血糖信息接口
++ (NSString *)upBloodglucoseWithloginName:(NSString *)loginName bloodglucose:(double)bloodglucose time:(NSInteger)time;
+//获取血糖信息接口
++ (NSString *)getBloodglucoseWithLoginName:(NSString *)loginName;
 @end

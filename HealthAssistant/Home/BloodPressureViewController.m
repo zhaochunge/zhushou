@@ -26,6 +26,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+
+    
     self.title = @"血压图";
     [self createData];
 
@@ -55,7 +57,7 @@
                        @{ @"6" : @104 },
                        @{ @"7" : @99},
                        @{ @"8" : @139},
-                       @{ @"9" : @66},
+                       @{ @"9" : @146},
                        @{ @"10" : @130}, nil];
     
     _SecPlottingValues = [NSMutableArray arrayWithObjects:@{ @"1" : @60 },

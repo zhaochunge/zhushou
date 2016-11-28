@@ -250,7 +250,7 @@
     
     NSLog(@"%f",rulerScrollView.contentOffset.x);
     
-    if (rulerScrollView.contentOffset.x <= 4 * 40 + 0.5) {
+    if (rulerScrollView.contentOffset.x <= 4 * 50 + 0.5) {
         
 //        [UIView animateWithDuration:.2f animations:^{
             rulerScrollView.contentOffset = CGPointMake(160+0.5, 0);

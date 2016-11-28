@@ -12,5 +12,5 @@
 - (void)takePhotos;
 - (void)alertViewWith:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles;
 - (void)alertViewWith:(NSString *)title message:(NSString *)message;
-
+- (BOOL) isMobile:(NSString *)mobileNumbel;
 @end

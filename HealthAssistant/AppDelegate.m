@@ -23,6 +23,8 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+
     [self.window makeKeyAndVisible];
     LoadViewController *load = [LoadViewController new];
 //

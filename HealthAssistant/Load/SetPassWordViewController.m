@@ -48,7 +48,7 @@
 
     if ([_password.text isEqualToString:_repectPaswd.text]) {
         
-        NSString *num = USERDEFAULTS_GET(USER_PHONENUM);
+        NSString *num = USERDEFAULTS_GET(LOGINNAME);
         
         NSLog(@"%@",[UrlString registwith:num loginPwd:_password.text]);
         

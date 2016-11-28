@@ -58,7 +58,7 @@
                         <constraint firstAttribute="height" constant="21" id="nN1-ky-Ime"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.078445549177387552" green="0.2860854815509668" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.078431372549019607" green="0.47058823529411764" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhd-Tq-rU3">
@@ -68,7 +68,7 @@
                         <constraint firstAttribute="height" constant="21" id="Hi6-f3-sCb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.068312263654087269" green="0.27927995274655715" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.078431372549019607" green="0.47058823529411764" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号/邮箱地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iad-xD-RV6">
@@ -85,7 +85,7 @@
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zr-Q8-ygF">
                     <rect key="frame" x="35" y="333" width="305" height="42"/>
-                    <color key="backgroundColor" red="0.072867524329184863" green="0.31233678193493442" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.078431372549019607" green="0.47058823529411764" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="31R-6y-Sg6"/>
                     </constraints>
