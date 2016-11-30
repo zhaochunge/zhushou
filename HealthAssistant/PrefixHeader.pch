@@ -39,4 +39,9 @@
 #import "UIBarButtonItem+KM.h"
 #import "PNLineChartView.h"
 #import "PNPlot.h"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import "MBProgressHUD.h"
+
 #endif /* PrefixHeader_pch */

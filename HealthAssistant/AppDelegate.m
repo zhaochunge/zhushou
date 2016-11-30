@@ -27,12 +27,8 @@
 
     [self.window makeKeyAndVisible];
     LoadViewController *load = [LoadViewController new];
-//
     self.window.rootViewController = load;
-    
-//    self.window.rootViewController = home;
-    
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:KNOTIFICATION_LOGINCHANGED object:nil];
     
     

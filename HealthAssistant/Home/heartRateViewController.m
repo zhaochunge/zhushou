@@ -10,7 +10,9 @@
 
 @interface heartRateViewController ()
 @property (weak, nonatomic) IBOutlet PNLineChartView *lineChartView;
-
+@property (nonatomic, strong)SHLineGraphView *lineGraph;
+@property (nonatomic, strong)NSMutableArray *xAxisValues;
+@property (nonatomic, strong)NSMutableArray *plottingValues;
 @end
 
 @implementation heartRateViewController
@@ -22,7 +24,6 @@
     self.title = @"心率图";
     
     [self createData];
-    [self createView];
 }
 
 - (void)createData{
@@ -31,6 +32,30 @@
        
         
         
+        if ([responseObject[@"status"] integerValue] == 1) {
+            
+            [self hideHUD];
+            
+            int i = 0;
+            
+            for (NSDictionary *dic in responseObject[@"content"]) {
+                
+                i++;
+                
+                NSDictionary *temp1 = @{[NSString stringWithFormat:@"%d",i] : [dic[@"createtime"] substringWithRange:NSMakeRange(5, 5)]};
+                
+                NSDictionary *temp2 = @{[NSString stringWithFormat:@"%d",i] : dic[@"heartRate"]};
+                
+                
+                
+                [self.xAxisValues addObject:temp1];
+                [self.plottingValues addObject:temp2];
+            }
+            
+            [self createView];
+            
+        }
+
         
         
         
@@ -45,11 +70,15 @@
 }
 
 - (void)createView{
-
-    SHLineGraphView *_lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 90, ScreenWidth, 480)];
+    if (_xAxisValues.count <= 6) {
+        _lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 90, ScreenWidth, 480)];
+        
+    }else{
+        _lineGraph = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 90, ScreenWidth/6*[_xAxisValues count], 480)];
+        
+    }
     _lineGraph.backgroundColor = [UIColor clearColor];
     
-    self.view.backgroundColor = [UIColor redColor];
     NSDictionary *_themeAttributes = @{
                                        kXAxisLabelColorKey : [UIColor colorWithRed:0 green:0 blue:0 alpha:1],
                                        kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:15],
@@ -62,33 +91,36 @@
     _lineGraph.themeAttributes = _themeAttributes;
     
     
-    _lineGraph.yAxisRange = @(180);
-    _lineGraph.minY = 50;
+    _lineGraph.yAxisRange = @(10);
+    _lineGraph.minY = 0;
+    _lineGraph.intervalCount = 10;
+
     _lineGraph.yAxisSuffix = @"";
-    
-    _lineGraph.xAxisValues = @[
-                               @{ @1 : @"11/16" },
-                               @{ @2 : @"11/17" },
-                               @{ @3 : @"11/18" },
-                               @{ @4 : @"11/19" },
-                               @{ @5 : @"11/20" },
-                               @{ @6 : @"今天" }
-                               ];
-//    _lineGraph.xAxisValues = @[@{@1 : @"11/16"},
-//                               @{@2:@"11/18"}];
+    _lineGraph.OnlyOne = YES;
+
+    _lineGraph.xAxisValues = nil;
+
     SHPlot *_plot1 = [[SHPlot alloc] init];
     
-//    _plot1.plottingValues = @[
-//                              @{ @1 : @107 },
-//                              @{ @2 : @95 },
-//                              @{ @3 : @50 },
-//                              @{ @4 : @112 },
-//                              @{ @5 : @94 },
-//                              @{ @6 : @104 }];
-//    _plot1.plottingValues = @[@{@1:@107},@{@2:@88}];
-//    NSArray *arr = @[@"107", @"95", @"", @"112", @"94", @"104"];
-//    NSArray *arr = @[@"107",@"88"];
-//    _plot1.plottingPointsLabels = arr;
+    _plot1.plottingValues = _plottingValues;
+    
+    
+    
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    int i = 0;
+    for (NSDictionary *dic in _plottingValues) {
+        
+        i++;
+        NSString *str = [NSString stringWithFormat:@"%@",dic[[NSString stringWithFormat:@"%d",i]]];
+        
+        [arr addObject:str];
+        
+    }
+    
+    _plot1.plottingPointsLabels = arr;
+
     //背景色,折线宽度,折线颜色,原点颜色
     NSDictionary *_plotThemeAttributes = @{
                                            kPlotFillColorKey : [UIColor colorWithRed:0.47 green:0.75 blue:0.78 alpha:0.5],
@@ -124,7 +156,12 @@
     vc.ViewState = HeartRate;
     
     PRESENT_VIEWCONTROLLER(vc, YES);
-    
+    [vc returnData:^(NSString *date, NSString *high, NSString *low) {
+        [_lineGraph removeFromSuperview];
+        
+        [self createData];
+        
+    }];
 }
 
 
@@ -137,7 +174,7 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSeg	ue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

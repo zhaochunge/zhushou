@@ -82,3 +82,29 @@
 }
 
 @end
+
+
+
+@implementation BloodGlucoseTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
++ (instancetype)cellWithTableView:(UITableView *)tableView{
+    static NSString *Identifier = @"BloodGlucoseTableViewCell";
+    
+    BloodGlucoseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
+    if (cell == nil) {
+        cell = [[NSBundle mainBundle]loadNibNamed:@"SettingTableViewCell" owner:self options:nil][3];
+    }
+    return cell;
+}
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
+}
+
+@end
+

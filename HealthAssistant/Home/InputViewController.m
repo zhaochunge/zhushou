@@ -46,12 +46,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.highLabel.text = @"100";
-    self.lowLabel.text = @"100";
+
     self.backView.hidden = YES;
     
-    self.highStr = @"100";
-    self.LowStr = @"100";
+
     self.DateStr = [self getDateHM];
     
     self.timeNum = [[NSDate date] timeIntervalSince1970];
@@ -101,16 +99,31 @@
     self.highRuler.layer.borderWidth = 1;
     
     self.highRuler.rulerDeletate = self;
-    [self.highRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
-    [self.upView addSubview:self.highRuler];
+    
+    
+    if (_ViewState == BloodPressure) {
+        self.highLabel.text = @"100";
+        self.lowLabel.text = @"100";
+        self.highStr = @"100";
+        self.LowStr = @"100";
+        [self.highRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
+        [self.upView addSubview:self.highRuler];
+    }
+    
+
 
    
     
     if (_ViewState == BloodGlucose) {
         
+        self.highLabel.text = @"5.0";
+        self.highStr = @"5.0";
+        
+        [self.highRuler showRulerScrollViewWithCount:200.0 average:[NSNumber numberWithFloat:0.1] currentValue:5 smallMode:NO];
+        [self.upView addSubview:self.highRuler];
         
         _dataType.text = @"血糖";
-        
+        _dataUnit.text = @"mmol/L";
         _lowLabelView.hidden = YES;
         
         return;
@@ -118,9 +131,10 @@
     
     
     if (_ViewState == HeartRate) {
-        
+        [self.highRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
+        [self.upView addSubview:self.highRuler];
         _dataType.text = @"心率";
-
+        _dataUnit.text = @"次/分钟";
         
         _lowLabelView.hidden = YES;
         
@@ -267,36 +281,37 @@
 
 - (IBAction)backDone:(id)sender {
     
-    switch (_ViewState) {
-        case BloodPressure:
-        {
-            NSLog(@"血压");
-            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:[_LowStr integerValue] time:self.timeNum];
-        }
-            break;
-        case BloodGlucose:
-        {
-            NSLog(@"血糖");
-            
-            
-            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:0 time:self.timeNum];
-  
-            
-        }
-            break;
-            case HeartRate:
-            
-        {
-            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:0 time:self.timeNum];
-            NSLog(@"心率");
-        }
-        default:
-            break;
-    }
+//    switch (_ViewState) {
+//        case BloodPressure:
+//        {
+//            NSLog(@"血压");
+//            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:[_LowStr integerValue] time:self.timeNum];
+//        }
+//            break;
+//        case BloodGlucose:
+//        {
+//            NSLog(@"血糖");
+//            
+//            
+//            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:0 time:self.timeNum];
+//  
+//            
+//        }
+//            break;
+//            case HeartRate:
+//            
+//        {
+//            [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:0 time:self.timeNum];
+//            NSLog(@"心率");
+//        }
+//        default:
+//            break;
+//    }
     
     
 
-    
+    [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:[_LowStr integerValue] time:self.timeNum];
+
 
     self.returnBlock(self.DateStr,self.highStr,self.LowStr);
     
@@ -316,19 +331,43 @@
 
 - (void)txhRrettyRuler:(TXHRulerScrollView *)rulerScrollView {
     
-    NSLog(@"%f",rulerScrollView.contentOffset.x);
-    
-    if (rulerScrollView.contentOffset.x <= 6 * 40 + 0.5) {
-        
-            rulerScrollView.contentOffset = CGPointMake(6 * 40+0.5, 0);
-
-    }
+//    NSLog(@"%f",rulerScrollView.contentOffset.x);
+//    
+//    if (rulerScrollView.contentOffset.x <= 6 * 40 + 0.5) {
+//        
+//            rulerScrollView.contentOffset = CGPointMake(6 * 40+0.5, 0);
+//
+//    }
     
     
     if (rulerScrollView.superview == self.highRuler) {
         
-        self.highLabel.text = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
-        self.highStr = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
+
+        
+
+        switch (_ViewState) {
+            case BloodPressure:
+            {
+                self.highLabel.text = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
+                self.highStr = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
+            }
+                break;
+            case BloodGlucose:
+            {
+                self.highLabel.text = [NSString stringWithFormat:@"%.1f",rulerScrollView.rulerValue];
+                self.highStr = [NSString stringWithFormat:@"%.1f",rulerScrollView.rulerValue];
+            }
+                break;
+                
+            case HeartRate:
+            {
+                self.highLabel.text = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
+                self.highStr = [NSString stringWithFormat:@"%.f",rulerScrollView.rulerValue];
+            }
+                break;
+            default:
+                break;
+        }
     }
     
     if (rulerScrollView.superview == self.lowRuler) {

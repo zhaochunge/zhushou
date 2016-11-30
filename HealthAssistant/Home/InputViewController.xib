@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="backView" destination="yic-xA-mu7" id="hm6-Xt-e7s"/>
                 <outlet property="dataType" destination="hQV-SW-AnK" id="QwT-2Z-yBe"/>
-                <outlet property="dataUnit" destination="hQV-SW-AnK" id="o8a-FE-iee"/>
+                <outlet property="dataUnit" destination="Cys-Iy-Fsx" id="1DL-oJ-4G8"/>
                 <outlet property="downView" destination="qmT-h0-SqO" id="aPL-38-ENk"/>
                 <outlet property="highLabel" destination="Zd7-aq-B82" id="ojX-ae-Yc7"/>
                 <outlet property="highLabelView" destination="rHb-ZS-yPr" id="u9Q-OK-t6T"/>

@@ -43,6 +43,8 @@
 		0440D6831DDED960006242E2 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440D6821DDED960006242E2 /* HomeViewController.m */; };
 		044991D81DE3C9EA006719B2 /* MDPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044991D71DE3C9EA006719B2 /* MDPieView.m */; };
 		C006851B1DE2C1CD00E29535 /* UrlString.m in Sources */ = {isa = PBXBuildFile; fileRef = C006851A1DE2C1CD00E29535 /* UrlString.m */; };
+		C00F02AA1DEE75A600ABFA5A /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C00F02A81DEE75A600ABFA5A /* CollectionViewCell.m */; };
+		C00F02AB1DEE75A600ABFA5A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C00F02A91DEE75A600ABFA5A /* CollectionViewCell.xib */; };
 		C032B9C21DE2C7AF000FB3C3 /* InputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C032B9C01DE2C7AF000FB3C3 /* InputViewController.xib */; };
 		C056E48C1DE518CE00E0490F /* BloodGlucoseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C056E48A1DE518CE00E0490F /* BloodGlucoseViewController.m */; };
 		C056E48D1DE518CE00E0490F /* BloodGlucoseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C056E48B1DE518CE00E0490F /* BloodGlucoseViewController.xib */; };
@@ -92,6 +94,7 @@
 		C0E61FA51DE435B80096ED0C /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E61F9E1DE435B80096ED0C /* PopoverView.m */; };
 		C0E61FA61DE435B80096ED0C /* SHLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E61FA21DE435B80096ED0C /* SHLineGraphView.m */; };
 		C0E61FA71DE435B80096ED0C /* SHPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E61FA41DE435B80096ED0C /* SHPlot.m */; };
+		C0F0B9F71DED012500BAEEB1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F0B9F61DED012500BAEEB1 /* MBProgressHUD.m */; };
 		C0F9510C1DE5780C0009998C /* UIBarButtonItem+KM.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F9510B1DE5780C0009998C /* UIBarButtonItem+KM.m */; };
 		C0F951131DE57A090009998C /* UIImage+KM.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F9510F1DE57A090009998C /* UIImage+KM.m */; };
 		C0F951141DE57A090009998C /* UIView+KM.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F951121DE57A090009998C /* UIView+KM.m */; };
@@ -182,6 +185,9 @@
 		044991D71DE3C9EA006719B2 /* MDPieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDPieView.m; sourceTree = "<group>"; };
 		C00685191DE2C1CD00E29535 /* UrlString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlString.h; sourceTree = "<group>"; };
 		C006851A1DE2C1CD00E29535 /* UrlString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlString.m; sourceTree = "<group>"; };
+		C00F02A71DEE75A600ABFA5A /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		C00F02A81DEE75A600ABFA5A /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		C00F02A91DEE75A600ABFA5A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		C032B9BE1DE2C7AF000FB3C3 /* InputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewController.h; sourceTree = "<group>"; };
 		C032B9C01DE2C7AF000FB3C3 /* InputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputViewController.xib; sourceTree = "<group>"; };
 		C056E4891DE518CE00E0490F /* BloodGlucoseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodGlucoseViewController.h; sourceTree = "<group>"; };
@@ -272,6 +278,8 @@
 		C0E61FA21DE435B80096ED0C /* SHLineGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLineGraphView.m; sourceTree = "<group>"; };
 		C0E61FA31DE435B80096ED0C /* SHPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPlot.h; sourceTree = "<group>"; };
 		C0E61FA41DE435B80096ED0C /* SHPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPlot.m; sourceTree = "<group>"; };
+		C0F0B9F51DED012500BAEEB1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C0F0B9F61DED012500BAEEB1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C0F9510A1DE5780C0009998C /* UIBarButtonItem+KM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+KM.h"; sourceTree = "<group>"; };
 		C0F9510B1DE5780C0009998C /* UIBarButtonItem+KM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+KM.m"; sourceTree = "<group>"; };
 		C0F9510E1DE57A090009998C /* UIImage+KM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KM.h"; sourceTree = "<group>"; };
@@ -504,6 +512,7 @@
 		C00685181DE2C12300E29535 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C0F0B9F41DED012500BAEEB1 /* MBProgressHUD */,
 				C0F9510D1DE57A090009998C /* UIImage */,
 				C0F951101DE57A090009998C /* UIView */,
 				C0F951091DE5780C0009998C /* NavigationItem */,
@@ -612,6 +621,9 @@
 				C0A84F151DE595B00049EF2F /* SettingTableViewCell.h */,
 				C0A84F161DE595B00049EF2F /* SettingTableViewCell.m */,
 				C0A84F171DE595B00049EF2F /* SettingTableViewCell.xib */,
+				C00F02A71DEE75A600ABFA5A /* CollectionViewCell.h */,
+				C00F02A81DEE75A600ABFA5A /* CollectionViewCell.m */,
+				C00F02A91DEE75A600ABFA5A /* CollectionViewCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -650,6 +662,15 @@
 				C0E61FA41DE435B80096ED0C /* SHPlot.m */,
 			);
 			path = SHLineGraphView;
+			sourceTree = "<group>";
+		};
+		C0F0B9F41DED012500BAEEB1 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C0F0B9F51DED012500BAEEB1 /* MBProgressHUD.h */,
+				C0F0B9F61DED012500BAEEB1 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		C0F951091DE5780C0009998C /* NavigationItem */ = {
@@ -788,6 +809,7 @@
 			files = (
 				C056E48D1DE518CE00E0490F /* BloodGlucoseViewController.xib in Resources */,
 				C0B9970C1DE965CD0080BB62 /* ResetPwdViewController.xib in Resources */,
+				C00F02AB1DEE75A600ABFA5A /* CollectionViewCell.xib in Resources */,
 				0439A4081DE2CE5600D05E53 /* Info.plist in Resources */,
 				C0B997021DE958EE0080BB62 /* ForgetNumViewController.xib in Resources */,
 				C0E61F961DE3DE6C0096ED0C /* BaseViewController.xib in Resources */,
@@ -833,12 +855,14 @@
 			files = (
 				C08ED35D1DE2EB7700BDC7D3 /* TXHRulerScrollView.m in Sources */,
 				C0E61FA71DE435B80096ED0C /* SHPlot.m in Sources */,
+				C00F02AA1DEE75A600ABFA5A /* CollectionViewCell.m in Sources */,
 				C0D72BCA1DE6C8B50055AD50 /* LineViewController.m in Sources */,
 				C0E61F9A1DE3DEA50096ED0C /* heartRateViewController.m in Sources */,
 				C006851B1DE2C1CD00E29535 /* UrlString.m in Sources */,
 				0440D6251DDE8803006242E2 /* ViewController.m in Sources */,
 				0439A3EA1DE2C2EE00D05E53 /* HomeViewController1.m in Sources */,
 				C056E4CA1DE5434600E0490F /* AFImageDownloader.m in Sources */,
+				C0F0B9F71DED012500BAEEB1 /* MBProgressHUD.m in Sources */,
 				C056E4911DE51B6600E0490F /* BloodPressureViewController.m in Sources */,
 				C0A84F181DE595B00049EF2F /* SettingTableViewCell.m in Sources */,
 				C0F951131DE57A090009998C /* UIImage+KM.m in Sources */,

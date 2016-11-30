@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthAssistant/Home/heartRateViewController.m"
-            timestampString = "502016902.730717"
+            filePath = "HealthAssistant/Home/InputViewController.m"
+            timestampString = "502188650.017841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-createData"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "-backDone:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

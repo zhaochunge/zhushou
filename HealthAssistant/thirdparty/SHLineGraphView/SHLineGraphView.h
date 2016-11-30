@@ -34,13 +34,14 @@
  */
 @property (nonatomic, strong) NSArray *xAxisValues;
 
-
+@property (nonatomic, assign)BOOL OnlyOne;
 /**
  *  the maximum y-value possible in the graph. make sure that the y-value is not in the plotting points is not greater
  *  then this number. otherwise the graph plotting will show wrong results.
  */
 @property (nonatomic, strong) NSNumber *yAxisRange;
 @property (nonatomic, assign) double minY;
+@property (nonatomic, assign) NSInteger yScale;
 /**
  *  y-axis values are calculated according to the yAxisRange passed. so you do not have to pass the explicit labels for 
  *  y-axis, but if you want to put any suffix to the calculated y-values, you can mention it here (e.g. K, M, Kg ...)
@@ -58,6 +59,9 @@
  */
 @property (nonatomic, strong) NSDictionary *themeAttributes;
 @property (nonatomic, strong) UIScrollView *backScrollView;
+
+@property (nonatomic, assign) NSInteger intervalCount;
+
 /**
  *  this method will add a Plot to the graph.
  *

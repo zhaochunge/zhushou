@@ -35,6 +35,9 @@
     _SecPlottingValues = [NSMutableArray array];
     _high = [NSMutableArray array];
     _low = [NSMutableArray array];
+    
+    
+    
     [self createData];
 
 }
@@ -43,10 +46,17 @@
 - (void)createData{
     
     
-    
+    [self showHUDtoView:self.view msg:@"加载中" animated:YES];
+    [_lineGraph removeFromSuperview];
+    [_xAxisValues removeAllObjects];
+    [_plottingValues removeAllObjects];
+    [_SecPlottingValues removeAllObjects];
+    [_high removeAllObjects];
+    [_low removeAllObjects];
     
     [XHNetworking GET:[UrlString getBloodPressureWithLoginName:USERDEFAULTS_GET(USER_LOGINNAME)] parameters:nil success:^(id responseObject) {
         
+        [self hideHUD];
         
         if ([responseObject[@"status"] integerValue] == 1) {
             
@@ -58,7 +68,7 @@
             
             i++;
             
-            NSDictionary *temp1 = @{[NSString stringWithFormat:@"%d",i] : [dic[@"createtime"] substringToIndex:10]};
+            NSDictionary *temp1 = @{[NSString stringWithFormat:@"%d",i] : [dic[@"createtime"] substringWithRange:NSMakeRange(5, 5)]};
             NSDictionary *temp2 = @{[NSString stringWithFormat:@"%d",i] : @([dic[@"highpressure"] integerValue])};
             NSDictionary *temp3 = @{[NSString stringWithFormat:@"%d",i] : @([dic[@"lowpressure"] integerValue])};
             
@@ -132,7 +142,6 @@
 
     }
     
-    
     _lineGraph.backgroundColor = [UIColor clearColor];
 
 
@@ -148,8 +157,9 @@
     _lineGraph.themeAttributes = _themeAttributes;
     
     
-    _lineGraph.yAxisRange = @(180);
-    _lineGraph.minY = 50;
+    _lineGraph.yAxisRange = @(200);
+    _lineGraph.intervalCount = 10;
+    _lineGraph.minY = 0;
     _lineGraph.yAxisSuffix = @"";
 
 
@@ -229,25 +239,26 @@
     [vc returnData:^(NSString *date, NSString *high, NSString *low) {
 
         
+//        
+//        [_xAxisValues addObject:@{@(_xAxisValues.count + 1): date}];
+////        _lineGraph.xAxisValues = _xAxisValues;
+//        
+//        [_plottingValues addObject:@{@(_plottingValues.count + 1) : high}];
+////        _plot.plottingValues = _plottingValues;
+//        
+//        [_SecPlottingValues addObject:@{@(_SecPlottingValues.count +1):low}];
+//        
+////        _plot.SecPlottingValues = _SecPlottingValues;
+//        
+//        [_high addObject:high];
+//        [_low addObject:low];
+//        
         
-        [_xAxisValues addObject:@{@(_xAxisValues.count + 1): date}];
-//        _lineGraph.xAxisValues = _xAxisValues;
-        
-        [_plottingValues addObject:@{@(_plottingValues.count + 1) : high}];
-//        _plot.plottingValues = _plottingValues;
-        
-        [_SecPlottingValues addObject:@{@(_SecPlottingValues.count +1):low}];
-        
-//        _plot.SecPlottingValues = _SecPlottingValues;
-        
-        [_high addObject:high];
-        [_low addObject:low];
         
         
+
         
-        
-        [_lineGraph removeFromSuperview];
-        [self createView];
+        [self createData];
     }];
     
 

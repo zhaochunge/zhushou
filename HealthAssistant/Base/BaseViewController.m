@@ -7,11 +7,11 @@
 //
 
 #import "BaseViewController.h"
-
-@interface BaseViewController ()<UIImagePickerControllerDelegate>
+#import <MobileCoreServices/UTCoreTypes.h>
+@interface BaseViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic,strong)UIImagePickerController *pickerController;
-
+@property (nonatomic,strong)MBProgressHUD *hud;
 @end
 
 @implementation BaseViewController
@@ -23,11 +23,31 @@
 
 - (void)takePhotos{
     
-    _pickerController = [UIImagePickerController new];
     
-    _pickerController.delegate = self;
-    _pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    PRESENT_VIEWCONTROLLER(_pickerController, YES);
+    
+#if TARGET_IPHONE_SIMULATOR
+    [self showHUDtoView:self.view msg:@"模拟器不能打开摄像头" animated:YES];
+#elif TARGET_OS_IPHONE
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        self.pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+            _pickerController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        }
+        self.pickerController.mediaTypes = @[(NSString *)kUTTypeImage];
+
+            PRESENT_VIEWCONTROLLER(_pickerController, YES);
+    }
+#endif
+    
+//    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+//    [self presentViewController:self.imagePicker animated:YES completion:NULL];
+
+//    _pickerController = [UIImagePickerController new];
+//    
+//    _pickerController.delegate = self;
+//    _pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    PRESENT_VIEWCONTROLLER(_pickerController, YES);
 
 
 }
@@ -53,11 +73,52 @@
 }
 
 
+- (UIImagePickerController *)pickerController{
+
+    if (_pickerController == nil) {
+        _pickerController = [[UIImagePickerController alloc] init];
+        _pickerController.modalPresentationStyle= UIModalPresentationOverFullScreen;
+        _pickerController.allowsEditing = YES;
+        _pickerController.delegate = self;
+        _pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+
+    return _pickerController;
+}
+
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+
     
     [_pickerController dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    NSData *fileData = UIImageJPEGRepresentation([info valueForKey:UIImagePickerControllerEditedImage], 1.0);
+    
+    NSString *encodedImageStr = [fileData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 
+    NSLog(@"%@",encodedImageStr);
+    NSLog(@"%@",image);
+    
+    
+    switch (_upStates) {
+        case BloodPressure:
+        {
+        }
+            break;
+        case BloodGlucose:
+        {
+        }
+            break;
+            case HeartRate:
+        {
+        }
+            break;
+        default:
+            break;
+    }
+    
+    
+    
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -112,6 +173,24 @@
     return NO;
 }
 
+- (void)showHUDtoView:(UIView *)view msg:(NSString *)msg animated:(BOOL)animated{
+
+    self.hud = [MBProgressHUD showHUDAddedTo:view animated:animated];
+
+    if (msg.length > 0 ) {
+        self.hud.label.text = msg;
+    }
+    
+    
+    
+}
+
+
+- (void)hideHUD{
+
+    [_hud hideAnimated:YES];
+
+}
 
 
 -(void)didReceiveMemoryWarning {

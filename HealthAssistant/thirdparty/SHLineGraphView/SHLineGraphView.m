@@ -28,7 +28,7 @@
 
 #define BOTTOM_MARGIN_TO_LEAVE 30.0
 #define TOP_MARGIN_TO_LEAVE 30.0
-#define INTERVAL_COUNT 13
+//#define INTERVAL_COUNT 13
 #define PLOT_WIDTH (self.bounds.size.width - _leftMarginToLeave)
 
 #define kAssociatedPlotObject @"kAssociatedPlotObject"
@@ -104,7 +104,14 @@
 - (void)setupTheView
 {
   for(SHPlot *plot in _plots) {
+      
+      _yScale = ([_yAxisRange integerValue] - _minY)/_intervalCount;
+
+      
     [self drawPlotWithPlot:plot];
+      
+      
+      
   }
 }
 
@@ -125,6 +132,9 @@
    actual plot drawing
    */
   [self drawPlot:plot];
+    
+    if (_OnlyOne)return;
+    
     [self drawSecPlot:plot];
 }
 
@@ -205,7 +215,8 @@
         
         //x value
         double height = self.frame.size.height - BOTTOM_MARGIN_TO_LEAVE - TOP_MARGIN_TO_LEAVE;
-        double y = height/INTERVAL_COUNT/10*([_value doubleValue] - _minY);
+        //////////////
+        double y = height/_intervalCount/_yScale*([_value doubleValue] - _minY);
         
         (plot.xPoints[xIndex]).x = ceil((plot.xPoints[xIndex]).x);
         (plot.xPoints[xIndex]).y = ceil(height - y + 30);
@@ -356,7 +367,8 @@
     
     //x value
     double height = self.frame.size.height - BOTTOM_MARGIN_TO_LEAVE - TOP_MARGIN_TO_LEAVE;
-    double y = height/INTERVAL_COUNT/10*([_value doubleValue] - _minY);
+      ////////////////////
+    double y = height/_intervalCount/_yScale*([_value doubleValue] - _minY);
       
     (plot.xPoints[xIndex]).x = ceil((plot.xPoints[xIndex]).x);
     (plot.xPoints[xIndex]).y = ceil(height - y + 30);
@@ -475,13 +487,13 @@
 
 - (void)drawYLabels:(SHPlot *)plot {
   double yRange = [_yAxisRange doubleValue]; // this value will be in dollars
-  double yIntervalValue = yRange / INTERVAL_COUNT;
-  double intervalInPx = (self.bounds.size.height - BOTTOM_MARGIN_TO_LEAVE ) / (INTERVAL_COUNT +1);
+  double yIntervalValue = yRange / _intervalCount;
+  double intervalInPx = (self.bounds.size.height - BOTTOM_MARGIN_TO_LEAVE ) / (_intervalCount +1);
   
   NSMutableArray *labelArray = [NSMutableArray array];
   float maxWidth = 0;
   
-  for(int i= INTERVAL_COUNT + 1; i >= 0; i--){
+  for(int i= _intervalCount + 1; i >= 0; i--){
     CGPoint currentLinePoint = CGPointMake(_leftMarginToLeave, i * intervalInPx);
     CGRect lableFrame = CGRectMake(0, currentLinePoint.y - (intervalInPx / 2), 100, intervalInPx);
     
@@ -491,7 +503,8 @@
       yAxisLabel.font = (UIFont *)_themeAttributes[kYAxisLabelFontKey];
       yAxisLabel.textColor = (UIColor *)_themeAttributes[kYAxisLabelColorKey];
       yAxisLabel.textAlignment = NSTextAlignmentCenter;
-      float val = (10 * (INTERVAL_COUNT + 1 - i)+_minY);
+        //////
+      float val = (_yScale * (_intervalCount + 1 - i)+_minY);
       if(val > 0){
         yAxisLabel.text = [NSString stringWithFormat:@"%.f%@", val, _yAxisSuffix];
       } else {
@@ -531,8 +544,8 @@
   
   CGMutablePathRef linesPath = CGPathCreateMutable();
   
-  double intervalInPx = (self.bounds.size.height - BOTTOM_MARGIN_TO_LEAVE) / (INTERVAL_COUNT + 1);
-  for(int i= INTERVAL_COUNT + 1; i > 0; i--){
+  double intervalInPx = (self.bounds.size.height - BOTTOM_MARGIN_TO_LEAVE) / (_intervalCount + 1);
+  for(int i= _intervalCount + 1; i > 0; i--){
     
     CGPoint currentLinePoint = CGPointMake(_leftMarginToLeave, (i * intervalInPx));
     

@@ -25,3 +25,9 @@
 @property (weak, nonatomic) IBOutlet UISwitch *cellSwitch;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @end
+
+@interface BloodGlucoseTableViewCell : UITableViewCell
+
+
++ (instancetype)cellWithTableView:(UITableView *)tableView;
+@end
