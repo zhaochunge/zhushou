@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UIPageControl *BloodGlucoseIndex;
 
-
+@property (nonatomic, strong) NSMutableArray *bloodGlucoseArr;
 @end
 
 @implementation BloodGlucoseViewController
@@ -42,10 +42,10 @@
     self.BloodGlucoseType = [NSMutableArray arrayWithObjects:@"凌晨",@"早餐前",@"早餐后",@"午餐前",@"午餐后",@"晚餐前",@"晚餐后",@"睡前", nil];
     
     
+    _bloodGlucoseArr = [NSMutableArray array];
     
     
-    
-//    [self createData];
+    [self createData];
     
     [self createTable];
     
@@ -99,6 +99,10 @@
         return CGSizeMake(ScreenWidth-30, 200);
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return 30;
+}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -110,14 +114,14 @@
     InputViewController *vc = [InputViewController new];
     
     vc.ViewState = BloodGlucose;
-    
+    vc.classify = (int)indexPath.row + 1;
     
     PRESENT_VIEWCONTROLLER(vc, YES);
     
     [vc returnData:^(NSString *date, NSString *high, NSString *low) {
         //        [_lineGraph removeFromSuperview];
         
-        //        [self createData];
+                [self createData];
         
     }];
 
@@ -127,13 +131,46 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _bloodGlucoseArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
     BloodGlucoseTableViewCell *cell = [BloodGlucoseTableViewCell cellWithTableView:tableView];
+    
+    
+    NSDictionary *dic = _bloodGlucoseArr[indexPath.row];
+    
+    cell.timeLabel.text = [dic[@"time"] substringWithRange:NSMakeRange(5, 5)];
+    
+    
+    for (NSDictionary *temp in dic[@"data"]) {
+        
+        if ([temp[@"classify"] isEqualToString:@"1"]) {
+            cell.data1.text = temp[@"bloodglucose"];
+        }else if ([temp[@"classify"] isEqualToString:@"2"]){
+            cell.data2.text = temp[@"bloodglucose"];
+
+        }else if ([temp[@"classify"] isEqualToString:@"3"]){
+            cell.data3.text = temp[@"bloodglucose"];
+            
+        }else if ([temp[@"classify"] isEqualToString:@"4"]){
+            cell.data4.text = temp[@"bloodglucose"];
+            
+        }else if ([temp[@"classify"] isEqualToString:@"5"]){
+            cell.data5.text = temp[@"bloodglucose"];
+            
+        }else if ([temp[@"classify"] isEqualToString:@"6"]){
+            cell.data6.text = temp[@"bloodglucose"];
+            
+        }else{
+            cell.data7.text = temp[@"bloodglucose"];
+
+        }
+        
+        
+    }
     
     
     
@@ -173,11 +210,11 @@
     
 
     [XHNetworking GET:[UrlString getBloodglucoseWithLoginName:USERDEFAULTS_GET(USER_LOGINNAME)] parameters:nil success:^(id responseObject) {
+        [self hideHUD];
         
+
         if ([responseObject[@"status"] integerValue] == 1) {
             
-            [self hideHUD];
-        
 //        int i = 0;
 //        
 //        for (NSDictionary *dic in responseObject[@"content"]) {
@@ -195,6 +232,12 @@
 //        }
         
 //            [self createView];
+            
+            
+            
+            _bloodGlucoseArr = [NSMutableArray arrayWithArray:responseObject[@"content"]];
+            
+            [self.bloodGlucoseTableView reloadData];
 
         }
         

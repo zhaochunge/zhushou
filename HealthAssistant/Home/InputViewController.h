@@ -15,6 +15,8 @@ typedef void (^ReturnBlock)(NSString *date,NSString *high,NSString *low);
 
 @property (nonatomic,strong)ReturnBlock returnBlock;
 @property (nonatomic,assign)InputState ViewState;
+@property (nonatomic,assign)int classify;
+
 
 - (void)returnData:(ReturnBlock)block;
 @end

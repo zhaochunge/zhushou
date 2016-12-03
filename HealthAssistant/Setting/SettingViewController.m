@@ -34,7 +34,7 @@
         return 3;
     }else{
     
-        return 5;
+        return 6;
     }
 }
 
@@ -96,7 +96,7 @@
             SettingTableViewCell *cell = [SettingTableViewCell cellWithTableView:tableView];
 
             
-            NSArray *arr = @[@"在通知栏显示步数",@"语音播报",@"离线地图",@"检测更新",@"关于"];
+            NSArray *arr = @[@"在通知栏显示步数",@"语音播报",@"离线地图",@"检测更新",@"关于",@"退出登录"];
             
             cell.textLabel.text = arr[indexPath.row];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -115,6 +115,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
+    if(indexPath.section == 1 && indexPath.row == 5 )
+    {
+        
+        USERDEFAULTS_SET(@NO, LOGIN_AUTO);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGED object:@NO];
+    
+    }
 }
 
 

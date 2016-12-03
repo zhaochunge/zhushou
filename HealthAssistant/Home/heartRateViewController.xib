@@ -87,6 +87,11 @@
                         <constraint firstItem="tuA-zz-Jd5" firstAttribute="top" secondItem="kih-sa-mdU" secondAttribute="top" constant="30" id="RQ2-QC-o7H"/>
                         <constraint firstItem="R6S-mJ-hjA" firstAttribute="height" secondItem="DsV-wj-iIm" secondAttribute="height" id="lqZ-HU-S7e"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="tuA-zz-Jd5"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.078431372550000003" green="0.47058823529999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>

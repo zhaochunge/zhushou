@@ -29,5 +29,24 @@
 @interface BloodGlucoseTableViewCell : UITableViewCell
 
 
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *data1;
+
+@property (weak, nonatomic) IBOutlet UILabel *data2;
+
+@property (weak, nonatomic) IBOutlet UILabel *data3;
+
+@property (weak, nonatomic) IBOutlet UILabel *data4;
+
+@property (weak, nonatomic) IBOutlet UILabel *data5;
+
+@property (weak, nonatomic) IBOutlet UILabel *data6;
+
+@property (weak, nonatomic) IBOutlet UILabel *data7;
+
+@property (weak, nonatomic) IBOutlet UILabel *data8;
+
+
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @end

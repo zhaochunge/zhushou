@@ -24,7 +24,7 @@
 //找回密码接口
 + (NSString *)resetPassWordWithloginName:(NSString *)loginName loginPwd:(NSString *)loginPwd;
 //上传血糖信息接口
-+ (NSString *)upBloodglucoseWithloginName:(NSString *)loginName bloodglucose:(double)bloodglucose time:(NSInteger)time;
++ (NSString *)upBloodglucoseWithloginName:(NSString *)loginName bloodglucose:(double)bloodglucose time:(NSString *)time classify:(int)classify;
 //获取血糖信息接口
 + (NSString *)getBloodglucoseWithLoginName:(NSString *)loginName;
 //上传血压信息接口
@@ -35,4 +35,8 @@
 + (NSString *)upHeartRateWithloginName:(NSString *)loginName HeartRate:(int)HeartRate time:(NSInteger)time;
 //获取心率信息接口
 + (NSString *)getHeartRateWithLoginName:(NSString *)loginName;
+//上传图片接口
++ (NSString *)upImage;
+//图片上传路径
++ (NSString *)upLoadPathWithLoginName:(NSString *)loginName savepath:(NSString *)savepath savethumbname:(NSString *)savethumbname;
 @end

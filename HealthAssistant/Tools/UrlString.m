@@ -50,8 +50,8 @@
     return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Users&a=restPassWord&loginName=%@&loginPwd=%@",BASEURL,loginName,loginPwd];
 }
 //上传血糖信息接口
-+ (NSString *)upBloodglucoseWithloginName:(NSString *)loginName bloodglucose:(double)bloodglucose time:(NSInteger)time{
-    return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=upBloodGlucose&loginName=%@&bloodglucose=%.2f&time=%ld",BASEURL,loginName,bloodglucose,time];
++ (NSString *)upBloodglucoseWithloginName:(NSString *)loginName bloodglucose:(double)bloodglucose time:(NSString *)time classify:(int)classify{
+    return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=upBloodGlucose&loginName=%@&bloodglucose=%.2f&time=%@&classify=%d",BASEURL,loginName,bloodglucose,time,classify];
 }
 //获取血糖信息接口
 + (NSString *)getBloodglucoseWithLoginName:(NSString *)loginName{
@@ -78,8 +78,17 @@
     
     return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=getHeartRate&loginName=%@",BASEURL,loginName];
 }
+//上传图片
++ (NSString *)upImage{
+
+    return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=uploadImage",BASEURL];
+}
+//上传图片路径
++ (NSString *)upLoadPathWithLoginName:(NSString *)loginName savepath:(NSString *)savepath savethumbname:(NSString *)savethumbname{
 
 
+    return [NSString stringWithFormat:@"http://%@/index.php?m=Home&c=Api&a=uploadPath&loginName=%@&imageUrl=%@%@",BASEURL,loginName,savepath,savethumbname];
+}
 
 
 

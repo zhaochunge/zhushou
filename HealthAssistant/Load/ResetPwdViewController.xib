@@ -120,7 +120,7 @@
                 <constraint firstItem="qmH-JX-fej" firstAttribute="leading" secondItem="9eR-Dj-xpl" secondAttribute="leading" constant="35" id="wW3-XL-k3e"/>
                 <constraint firstItem="m9l-Tl-hvr" firstAttribute="leading" secondItem="9eR-Dj-xpl" secondAttribute="leading" constant="20" id="xWe-0k-fJ5"/>
             </constraints>
-            <point key="canvasLocation" x="339" y="-664"/>
+            <point key="canvasLocation" x="338.5" y="-664.5"/>
         </view>
     </objects>
     <resources>

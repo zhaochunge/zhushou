@@ -27,7 +27,7 @@
 #define USER_LOGINNAME @"UserLoginName"
 #define USER_PASSWORD @"UserPassWord"
 #define LOGIN_STATE @"Loginstate"
-
+#define LOGIN_AUTO @"Login_auto"
 
 
 #import "SHLineGraphView.h"

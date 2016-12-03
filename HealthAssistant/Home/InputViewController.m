@@ -49,8 +49,7 @@
 
     self.backView.hidden = YES;
     
-
-    self.DateStr = [self getDateHM];
+    _DateStr = @"";
     
     self.timeNum = [[NSDate date] timeIntervalSince1970];
     
@@ -131,8 +130,11 @@
     
     
     if (_ViewState == HeartRate) {
-        [self.highRuler showRulerScrollViewWithCount:200 average:[NSNumber numberWithFloat:1] currentValue:100.f smallMode:NO];
+        [self.highRuler showRulerScrollViewWithCount:100 average:[NSNumber numberWithFloat:1] currentValue:50.f smallMode:NO];
         [self.upView addSubview:self.highRuler];
+        self.highLabel.text = @"50";
+        self.highStr = @"50";
+
         _dataType.text = @"心率";
         _dataUnit.text = @"次/分钟";
         
@@ -174,7 +176,29 @@
     
     if (indexPath.row == 2) {
         
-        cell.textLabel.text = @"血压";
+        
+        
+        if (_ViewState == BloodPressure) {
+            cell.textLabel.text = @"血压";
+
+
+        }
+
+        if (_ViewState == BloodGlucose) {
+
+            cell.textLabel.text = @"血糖";
+
+        }
+        
+        if (_ViewState == HeartRate) {
+
+            cell.textLabel.text = @"心率";
+
+        }
+
+        
+        
+        
         cell.backgroundColor = RGBA(242, 242, 242, 1);
     }else{
     
@@ -257,11 +281,12 @@
     self.backView.hidden = YES;
     
     
-    NSArray *typeArr = @[@"yyyy-MM-dd",@"HH:mm"];
+//    NSArray *typeArr = @[@"yyyy-MM-dd",@"HH:mm"];
     
         NSDate *select = [self.timePicker date];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:typeArr[self.index]];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+
     UITableViewCell *cell = [self.myTableView  cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.index inSection:0]];
     
     cell.detailTextLabel.text = [dateFormatter stringFromDate:select];
@@ -309,8 +334,9 @@
 //    }
     
     
+    
 
-    [self upLoadWithfirstParameter:[_highStr integerValue] secParameter:[_LowStr integerValue] time:self.timeNum];
+    [self upLoadWithfirstParameter:[_highStr doubleValue] secParameter:[_LowStr doubleValue] time:self.timeNum];
 
 
     self.returnBlock(self.DateStr,self.highStr,self.LowStr);
@@ -399,7 +425,17 @@
         {
             NSLog(@"血糖");
             
-            urlStr = [UrlString upBloodglucoseWithloginName:USERDEFAULTS_GET(USER_LOGINNAME) bloodglucose:firstParameter time:time];
+            if ([_DateStr isEqualToString:@""]) {
+                
+                
+                
+                _DateStr = [self getDateYMD];
+                
+                
+                
+            }
+            
+            urlStr = [UrlString upBloodglucoseWithloginName:USERDEFAULTS_GET(USER_LOGINNAME) bloodglucose:firstParameter time:_DateStr classify:_classify];
             
         }
             break;

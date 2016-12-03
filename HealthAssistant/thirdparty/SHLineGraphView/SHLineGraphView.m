@@ -60,10 +60,8 @@
 }
 
 - (void)loadDefaultTheme {
-    
-    
-    
-    self.backScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+
+    self.backScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(50, 0, self.frame.size.width - 50, self.frame.size.height)];
     
     self.backScrollView.contentSize = CGSizeMake(self.frame.size.width*2 - ScreenWidth + 1, 0);
     
@@ -71,13 +69,13 @@
     
     self.backScrollView.showsHorizontalScrollIndicator = NO;
     
-    self.backScrollView.contentOffset = CGPointMake(self.frame.size.width - ScreenWidth, 0);
+    self.backScrollView.contentOffset = CGPointMake(self.frame.size.width - ScreenWidth + 50, 0);
     
-    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, self.frame.size.height)];
-    whiteView.backgroundColor = [UIColor whiteColor];
-    
-    [self addSubview:whiteView];
-    
+//    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, self.frame.size.height)];
+//    whiteView.backgroundColor = [UIColor whiteColor];
+//    
+//    [self addSubview:whiteView];
+//    
   _themeAttributes = @{
                            kXAxisLabelColorKey : [UIColor colorWithRed:0.48 green:0.48 blue:0.49 alpha:0.4],
                            kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
@@ -523,10 +521,13 @@
     }
   }
   
-  _leftMarginToLeave = maxWidth + [_themeAttributes[kYAxisLabelSideMarginsKey] doubleValue];
+//  _leftMarginToLeave = maxWidth + [_themeAttributes[kYAxisLabelSideMarginsKey] doubleValue];
   
+    float labelX = maxWidth + [_themeAttributes[kYAxisLabelSideMarginsKey] doubleValue];
+
+    
   for( UILabel *l in labelArray) {
-    CGSize newSize = CGSizeMake(_leftMarginToLeave, l.frame.size.height);
+    CGSize newSize = CGSizeMake(labelX, l.frame.size.height);
     CGRect newFrame = l.frame;
     newFrame.size = newSize;
     l.frame = newFrame;

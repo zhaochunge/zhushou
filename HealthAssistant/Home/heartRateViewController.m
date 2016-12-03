@@ -28,6 +28,12 @@
 
 - (void)createData{
 
+    
+    
+    _xAxisValues = [NSMutableArray array];
+    
+    _plottingValues = [NSMutableArray array];
+    
     [XHNetworking GET:[UrlString getHeartRateWithLoginName:USERDEFAULTS_GET(USER_LOGINNAME)] parameters:nil success:^(id responseObject) {
        
         
@@ -91,14 +97,14 @@
     _lineGraph.themeAttributes = _themeAttributes;
     
     
-    _lineGraph.yAxisRange = @(10);
+    _lineGraph.yAxisRange = @(100);
     _lineGraph.minY = 0;
     _lineGraph.intervalCount = 10;
 
     _lineGraph.yAxisSuffix = @"";
     _lineGraph.OnlyOne = YES;
 
-    _lineGraph.xAxisValues = nil;
+    _lineGraph.xAxisValues = _xAxisValues;
 
     SHPlot *_plot1 = [[SHPlot alloc] init];
     

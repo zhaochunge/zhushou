@@ -26,9 +26,17 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 
     [self.window makeKeyAndVisible];
+    
+    
+    if ([USERDEFAULTS_GET(LOGIN_AUTO) isEqual:@1]) {
+        HomeViewController *home = [HomeViewController new];
+        UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:home];
+        self.window.rootViewController = navc;
+    }else{
+    
     LoadViewController *load = [LoadViewController new];
     self.window.rootViewController = load;
-
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:KNOTIFICATION_LOGINCHANGED object:nil];
     
     
@@ -46,6 +54,15 @@
     if (loginSuccess) {
             UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:home];
         self.window.rootViewController = navc;
+        
+        USERDEFAULTS_SET(@YES, LOGIN_AUTO);
+        
+    }else{
+    
+        LoadViewController *load = [LoadViewController new];
+        self.window.rootViewController = load;
+        USERDEFAULTS_SET(@NO, LOGIN_AUTO);
+
     }
 
 

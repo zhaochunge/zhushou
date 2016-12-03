@@ -20,6 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
             </tableViewCellContentView>
+            <point key="canvasLocation" x="33" y="57"/>
         </tableViewCell>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="7Vf-kw-HBb" customClass="ExplainTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -120,6 +121,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0Y-0Y-D9W">
@@ -131,6 +133,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-tF-HlU">
@@ -142,6 +145,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0N1-h2-9En">
@@ -153,6 +157,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgy-Of-Pi8">
@@ -164,6 +169,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tl-gL-8Ha">
@@ -175,6 +181,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqp-ca-Okh">
@@ -186,6 +193,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqR-Zc-iwV">
@@ -197,6 +205,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96v-q3-TZE">
@@ -208,6 +217,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <real key="value" value="0.5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
@@ -251,6 +261,17 @@
                     <constraint firstItem="YJs-tF-HlU" firstAttribute="width" secondItem="Lk2-7s-Kfq" secondAttribute="width" id="xeK-Bk-Ieb"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="data1" destination="K0Y-0Y-D9W" id="RdH-jE-TEi"/>
+                <outlet property="data2" destination="YJs-tF-HlU" id="CK2-ba-6ml"/>
+                <outlet property="data3" destination="0N1-h2-9En" id="zuo-qN-8jo"/>
+                <outlet property="data4" destination="Rgy-Of-Pi8" id="uS9-Hb-9O2"/>
+                <outlet property="data5" destination="6Tl-gL-8Ha" id="Ss1-Nd-60V"/>
+                <outlet property="data6" destination="Rqp-ca-Okh" id="xtn-zg-N2D"/>
+                <outlet property="data7" destination="nqR-Zc-iwV" id="WgZ-f2-eLK"/>
+                <outlet property="data8" destination="96v-q3-TZE" id="EHb-Xa-L0c"/>
+                <outlet property="timeLabel" destination="Lk2-7s-Kfq" id="PCX-uR-t6G"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="266"/>
         </tableViewCell>
     </objects>

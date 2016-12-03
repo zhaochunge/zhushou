@@ -8,10 +8,18 @@
 
 #import "BaseViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "AFNetworking.h"
 @interface BaseViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic,strong)UIImagePickerController *pickerController;
 @property (nonatomic,strong)MBProgressHUD *hud;
+
+@property (nonatomic,strong)UIImageView *myImageView;
+
+@property (nonatomic,strong)NSData *imageData;
+
+@property (nonatomic,strong)NSMutableDictionary *returnDic;
+
 @end
 
 @implementation BaseViewController
@@ -78,7 +86,7 @@
     if (_pickerController == nil) {
         _pickerController = [[UIImagePickerController alloc] init];
         _pickerController.modalPresentationStyle= UIModalPresentationOverFullScreen;
-        _pickerController.allowsEditing = YES;
+        _pickerController.allowsEditing = NO;
         _pickerController.delegate = self;
         _pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
@@ -90,36 +98,155 @@
 
     
     [_pickerController dismissViewControllerAnimated:YES completion:nil];
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    
-    NSData *fileData = UIImageJPEGRepresentation([info valueForKey:UIImagePickerControllerEditedImage], 1.0);
-    
-    NSString *encodedImageStr = [fileData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 
-    NSLog(@"%@",encodedImageStr);
-    NSLog(@"%@",image);
+    _imageData = UIImageJPEGRepresentation([self fixOrientation:[info valueForKey:UIImagePickerControllerOriginalImage]], 0.5);
     
+
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:USERDEFAULTS_GET(USER_LOGINNAME) forKey:@"loginName"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
-    switch (_upStates) {
-        case BloodPressure:
-        {
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/plain",@"text/html", nil];
+    
+    [manager POST:[UrlString upImage] parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+
+        [formData appendPartWithFileData:_imageData name:@"Filedata" fileName:@"c.jpg" mimeType:@"image/jpg"];
+        
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        
+        
+        if ([responseObject[@"status"] integerValue] == 1) {
+            _returnDic = [NSMutableDictionary dictionaryWithDictionary:responseObject[@"Filedata"]];
+            
+            [self upLoadPathWith:_returnDic];
+            
+        }else{
+        
+            [self alertViewWith:@"提示" message:@"上传失败"];
+
+            
         }
+        
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"------%@",error);
+    }];
+    
+  
+}
+
+
+
+- (void)upLoadPathWith:(NSMutableDictionary *)filedata{
+    
+    NSLog(@"%@",[UrlString upLoadPathWithLoginName:USERDEFAULTS_GET(USER_LOGINNAME) savepath:filedata[@"savepath"] savethumbname:[filedata objectForKey:@"savethumbname"]]);
+    
+    [XHNetworking GET:[UrlString upLoadPathWithLoginName:USERDEFAULTS_GET(USER_LOGINNAME) savepath:filedata[@"savepath"] savethumbname:[filedata objectForKey:@"savethumbname"]] parameters:nil success:^(id responseObject) {
+        
+        [self alertViewWith:@"提示" message:@"上传成功"];
+
+    } failure:^(NSError *error) {
+        
+        
+    }];
+
+
+}
+
+
+- (UIImage *)fixOrientation:(UIImage *)aImage {
+    
+    // No-op if the orientation is already correct
+    if (aImage.imageOrientation == UIImageOrientationUp)
+        return aImage;
+    
+    // We need to calculate the proper transformation to make the image upright.
+    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, aImage.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
             break;
-        case BloodGlucose:
-        {
-        }
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
             break;
-            case HeartRate:
-        {
-        }
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, aImage.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
             break;
         default:
             break;
     }
     
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        default:
+            break;
+    }
     
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, aImage.size.width, aImage.size.height,
+                                             CGImageGetBitsPerComponent(aImage.CGImage), 0,
+                                             CGImageGetColorSpace(aImage.CGImage),
+                                             CGImageGetBitmapInfo(aImage.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.height,aImage.size.width), aImage.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.width,aImage.size.height), aImage.CGImage);
+            break;
+    }
     
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
 }
+
+- (void)upImage{
+
+
+    
+
+
+}
+
+
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [_pickerController dismissViewControllerAnimated:YES completion:nil];
