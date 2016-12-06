@@ -79,6 +79,7 @@
 
     
     if (_doSomeThing) return;
+    [self showHUDtoView:self.view msg:@"加载中" animated:YES];
 
     _doSomeThing = YES;
 
@@ -88,7 +89,7 @@
         
         
         [XHNetworking GET:[UrlString loginWith:_loadName.text loginPwd:_passWord.text] parameters:nil success:^(id responseObject) {
-            
+            [self hideHUD];
             _doSomeThing = NO;
             if ([responseObject[@"status"] integerValue] == 1) {
                 

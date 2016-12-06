@@ -20,7 +20,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    
+//    for (double i = 0; i < 9 ; i+=0.1) {
+//        
+//        @autoreleasepool {
+//            NSLog(@"%.1f",i);
+//        }
+//        
+//    }
 
+
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
